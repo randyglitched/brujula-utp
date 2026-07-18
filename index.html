@@ -225,7 +225,7 @@ const PAGINAS = construirPaginas();
 // ============ ESTADO ============
 // Reemplaza esto con la URL de tu Google Apps Script Web App (ver instrucciones del proyecto).
 // Mientras esté vacío, el registro agregado simplemente no se envía a ningún lado.
-const SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzxOajwWEYCXJT9ya0kVdcAMAh1bcwoSVza4yqp4kDPdVjsWnLosj5RPpBuoLhAldaoOQ/exec";
+const SHEETS_WEBAPP_URL = "";
 
 let respuestas = {};
 let respuestasAbiertas = {};
@@ -628,6 +628,15 @@ function htmlResultados() {
   `;
 }
 
+function limpiarMarkdown(texto) {
+  return texto
+    .replace(/\*\*(.*?)\*\*/g, "$1")
+    .replace(/\*(.*?)\*/g, "$1")
+    .replace(/^#{1,6}\s*/gm, "")
+    .replace(/[*#]/g, "")
+    .trim();
+}
+
 // ============ ANALISIS CUALITATIVO CON IA (capa opcional) ============
 async function generarLecturaIA(top3) {
   try {
@@ -640,8 +649,13 @@ async function generarLecturaIA(top3) {
 Con base en estas 5 respuestas abiertas y sus 3 mejores matches de carrera (calculados matemáticamente con RIASEC/Big Five),
 escribe un párrafo de 120-180 palabras en español, cercano y sin sonar a informe corporativo, que conecte 1-2 detalles
 concretos de sus respuestas con el resultado. No repitas los scores numéricos. No inventes datos que no estén en las respuestas.
-Responde en texto plano, sin Markdown: no uses "#" para títulos, no uses "**" para negritas, no uses listas ni viñetas.
-Solo un párrafo corrido, como si se lo estuvieras diciendo de viva voz.
+
+FORMATO — REGLA ESTRICTA: tu respuesta se muestra como texto plano sin ningún renderizado de Markdown. Por lo tanto:
+- Prohibido usar el caracter "*" en cualquier cantidad (ni "*cursiva*" ni "**negrita**") para dar énfasis. Si quieres enfatizar algo, usa la palabra misma o el orden de la oración, nunca símbolos.
+- Prohibido usar "#" para títulos o encabezados.
+- Prohibido usar listas, viñetas, o numeración.
+- Un solo párrafo corrido, como si se lo estuvieras diciendo de viva voz a la persona.
+Revisa tu respuesta antes de responder: si contiene algún "*" o "#", reescríbela sin esos caracteres.
 
 RESPUESTAS DEL ESTUDIANTE:
 ${preguntasYRespuestas}
@@ -659,7 +673,7 @@ ${carrerasTexto}`;
     if (!data.texto) throw new Error("Respuesta vacia");
 
     iaEstado = "listo";
-    iaTexto = data.texto;
+    iaTexto = limpiarMarkdown(data.texto);
     const el = document.getElementById("ia-texto");
     if (el) {
       el.textContent = iaTexto;
