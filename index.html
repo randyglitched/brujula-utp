@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brújula UTP — Orientación Vocacional</title>
+<meta name="description" content="Test de orientación vocacional RIASEC + Big Five calibrado contra las carreras del Centro Regional de Azuero, UTP.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230E1B2C'/%3E%3Cpolygon points='50,15 80,32 80,68 50,85 20,68 20,32' fill='none' stroke='%23D89B3C' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B2C;
+    --ink-2:#132538;
+    --ink-3:#1A3049;
+    --line:#3D6C8C;
+    --line-dim:#24425A;
+    --brass:#D89B3C;
+    --brass-light:#F0C878;
+    --text:#E7EDF2;
+    --text-dim:#8FA6B8;
+    --ok:#6FA787;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--line-dim) 0px, var(--line-dim) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, var(--line-dim) 0px, var(--line-dim) 1px, transparent 1px, transparent 40px),
+      var(--ink);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:32px 16px 64px;
+  }
+  #app{
+    width:100%;
+    max-width:720px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:6px;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    margin:0 0 8px;
+    color:var(--text);
+  }
+  h1{font-size:28px;}
+  h2{font-size:20px;}
+  p{line-height:1.55; color:var(--text-dim); margin:0 0 16px;}
+  .card{
+    background:var(--ink-2);
+    border:1px solid var(--line-dim);
+    border-radius:var(--radius);
+    padding:24px;
+    margin-bottom:16px;
+  }
+  .btn{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    background:var(--brass);
+    color:var(--ink);
+    border:none;
+    border-radius:8px;
+    padding:12px 22px;
+    cursor:pointer;
+    transition:transform .12s ease, background .12s ease;
+  }
+  .btn:hover{background:var(--brass-light); transform:translateY(-1px);}
+  .btn:disabled{background:var(--line-dim); color:var(--text-dim); cursor:not-allowed; transform:none;}
+  .btn-ghost{
+    background:transparent;
+    color:var(--text-dim);
+    border:1px solid var(--line-dim);
+  }
+  .btn-ghost:hover{background:var(--ink-3); color:var(--text);}
+  .btn-row{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:24px;}
+  .progress-wrap{
+    display:flex; align-items:center; gap:12px; margin-bottom:24px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-dim);
+  }
+  .progress-bar{flex:1; height:6px; background:var(--ink-3); border-radius:4px; overflow:hidden;}
+  .progress-fill{height:100%; background:linear-gradient(90deg, var(--line), var(--brass)); transition:width .3s ease;}
+  .question{
+    border-bottom:1px solid var(--line-dim);
+    padding:18px 0;
+  }
+  .question:last-child{border-bottom:none;}
+  .question-text{font-size:15px; color:var(--text); margin-bottom:12px; line-height:1.5;}
+  .qnum{font-family:'IBM Plex Mono', monospace; color:var(--brass-light); font-size:12px; margin-right:8px;}
+  .likert-row{display:flex; align-items:center; gap:8px;}
+  .likert-label{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--text-dim); width:92px;}
+  .likert-label.right{text-align:right;}
+  .likert-options{display:flex; gap:10px; flex:1; justify-content:center;}
+  .likert-opt{
+    width:38px; height:38px; border-radius:50%;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-family:'IBM Plex Mono', monospace; font-size:13px;
+    color:var(--text-dim);
+    transition:all .12s ease;
+    background:transparent;
+  }
+  .likert-opt:hover{border-color:var(--brass-light); color:var(--text);}
+  .likert-opt.selected{
+    background:var(--brass); border-color:var(--brass); color:var(--ink); font-weight:600;
+  }
+  textarea{
+    width:100%; min-height:90px; background:var(--ink-3); border:1px solid var(--line-dim);
+    border-radius:8px; color:var(--text); font-family:'IBM Plex Sans', sans-serif; font-size:14px;
+    padding:12px; resize:vertical;
+  }
+  textarea:focus{outline:none; border-color:var(--brass);}
+  .career-card{
+    background:var(--ink-2); border:1px solid var(--line-dim); border-radius:var(--radius);
+    padding:18px 20px; margin-bottom:12px;
+  }
+  .career-card.top{border-color:var(--brass);}
+  .career-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px;}
+  .career-rank{font-family:'IBM Plex Mono', monospace; color:var(--brass-light); font-size:13px;}
+  .career-name{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:17px;}
+  .career-score{font-family:'IBM Plex Mono', monospace; font-size:20px; color:var(--brass-light);}
+  .career-meta{font-size:12px; color:var(--text-dim); margin-top:4px;}
+  .badge{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10px;
+    padding:2px 8px; border-radius:20px; border:1px solid var(--line); color:var(--text-dim);
+    margin-top:8px;
+  }
+  .badge.warn{border-color:var(--brass); color:var(--brass-light);}
+  .score-bar{height:5px; background:var(--ink-3); border-radius:3px; overflow:hidden; margin-top:10px;}
+  .score-fill{height:100%; background:var(--brass);}
+  .hex-wrap{display:flex; justify-content:center; margin:20px 0;}
+  .legend{display:flex; gap:20px; justify-content:center; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--text-dim); margin-top:8px;}
+  .legend span::before{content:''; display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:middle;}
+  .legend .u::before{background:var(--brass);}
+  .legend .c::before{background:var(--line);}
+  .checkbox-row{display:flex; align-items:flex-start; gap:10px; margin-top:14px;}
+  .checkbox-row input{margin-top:3px; accent-color:var(--brass); width:16px; height:16px; flex-shrink:0;}
+  .checkbox-row label{font-size:13px; color:var(--text-dim); line-height:1.5;}
+  .banner{
+    background:var(--ink-3); border:1px solid var(--brass); border-radius:8px;
+    padding:14px 16px; margin-bottom:16px; font-size:13px; color:var(--text);
+    display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;
+  }
+  .banner.alerta{border-color:#C97A4A;}
+  .link-toggle{
+    background:none; border:none; color:var(--brass-light); font-family:'IBM Plex Mono', monospace;
+    font-size:12px; cursor:pointer; text-decoration:underline; padding:0;
+  }
+  .mini-row{
+    display:flex; justify-content:space-between; align-items:center; padding:8px 0;
+    border-bottom:1px solid var(--line-dim); font-size:13px;
+  }
+  .mini-row:last-child{border-bottom:none;}
+  @media print{
+    body{background:#fff; color:#111;}
+    .btn-row, #btn-imprimir, #btn-reiniciar, .progress-wrap{display:none !important;}
+    .card, .career-card{background:#fff; border:1px solid #ccc;}
+    h1,h2,h3,.career-name{color:#111;}
+    p, .career-meta, .legend{color:#333;}
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+// Datos embebidos generados automaticamente desde /data/*.json
+const RIASEC_BANK = {"R": [{"id": "R1", "texto": "Disfruto reparar o armar objetos mecánicos o eléctricos."}, {"id": "R2", "texto": "Prefiero actividades donde pueda usar mis manos y herramientas."}, {"id": "R3", "texto": "Me atrae más resolver un problema físico que uno abstracto."}, {"id": "R4", "texto": "Disfruto trabajar al aire libre o en talleres y laboratorios de campo."}, {"id": "R5", "texto": "Me interesa entender cómo funcionan las máquinas por dentro."}, {"id": "R6", "texto": "Prefiero seguir instrucciones técnicas precisas antes que improvisar."}, {"id": "R7", "texto": "Me siento cómodo con tareas que requieren fuerza física o destreza manual."}, {"id": "R8", "texto": "Disfruto construir, ensamblar o reparar cosas más que hablar de ideas."}], "I": [{"id": "I1", "texto": "Me gusta analizar datos o resolver problemas complejos."}, {"id": "I2", "texto": "Disfruto entender el \"por qué\" detrás de los fenómenos naturales o tecnológicos."}, {"id": "I3", "texto": "Prefiero investigar a fondo un tema antes de tomar una decisión."}, {"id": "I4", "texto": "Me atraen las matemáticas, la física o la lógica."}, {"id": "I5", "texto": "Disfruto formular hipótesis y comprobarlas con evidencia."}, {"id": "I6", "texto": "Me gusta leer sobre ciencia o tecnología en mi tiempo libre."}, {"id": "I7", "texto": "Prefiero trabajar de forma independiente en problemas técnicos."}, {"id": "I8", "texto": "Me siento motivado al resolver acertijos o problemas complejos."}], "A": [{"id": "A1", "texto": "Disfruto expresar ideas de forma creativa (diseño, escritura, música, etc.)."}, {"id": "A2", "texto": "Prefiero ambientes de trabajo flexibles, sin reglas rígidas."}, {"id": "A3", "texto": "Me gusta imaginar soluciones poco convencionales."}, {"id": "A4", "texto": "Disfruto crear contenido visual, escrito o audiovisual."}, {"id": "A5", "texto": "Me identifico como una persona creativa u original."}, {"id": "A6", "texto": "Prefiero tareas donde pueda innovar en vez de seguir un manual."}, {"id": "A7", "texto": "Disfruto cuidar el diseño o la estética de lo que hago."}, {"id": "A8", "texto": "Me atrae la idea de expresar mi personalidad a través de mi trabajo."}], "S": [{"id": "S1", "texto": "Disfruto ayudar a otras personas a resolver sus problemas."}, {"id": "S2", "texto": "Me gusta enseñar, explicar o guiar a otros."}, {"id": "S3", "texto": "Prefiero trabajar en equipo antes que solo."}, {"id": "S4", "texto": "Me siento cómodo hablando en público o liderando grupos."}, {"id": "S5", "texto": "Disfruto escuchar y entender las emociones de otras personas."}, {"id": "S6", "texto": "Me interesa el bienestar de mi comunidad."}, {"id": "S7", "texto": "Prefiero roles donde interactúo constantemente con personas."}, {"id": "S8", "texto": "Disfruto participar en actividades de voluntariado o servicio social."}], "E": [{"id": "E1", "texto": "Me gusta persuadir o convencer a otros de una idea."}, {"id": "E2", "texto": "Disfruto tomar la iniciativa en proyectos nuevos."}, {"id": "E3", "texto": "Me atrae la idea de liderar un negocio o un equipo."}, {"id": "E4", "texto": "Disfruto negociar o cerrar acuerdos."}, {"id": "E5", "texto": "Me siento cómodo asumiendo riesgos calculados."}, {"id": "E6", "texto": "Prefiero fijar mis propias metas antes que seguir instrucciones de otros."}, {"id": "E7", "texto": "Me motiva competir y destacar frente a otros."}, {"id": "E8", "texto": "Disfruto vender ideas, productos o proyectos."}], "C": [{"id": "C1", "texto": "Prefiero el orden, la organización y los procedimientos claros."}, {"id": "C2", "texto": "Disfruto trabajar con números, datos o registros detallados."}, {"id": "C3", "texto": "Me siento cómodo siguiendo reglas y estructuras establecidas."}, {"id": "C4", "texto": "Prefiero tareas predecibles antes que ambiguas."}, {"id": "C5", "texto": "Disfruto organizar información en sistemas o archivos."}, {"id": "C6", "texto": "Me gusta revisar los detalles para asegurar que todo esté correcto."}, {"id": "C7", "texto": "Prefiero planificar cuidadosamente antes de actuar."}, {"id": "C8", "texto": "Me siento cómodo con tareas administrativas o de control."}]};
+const BIG5_BANK = {"apertura": [{"id": "O1", "texto": "Tengo una imaginación vívida.", "reverso": false}, {"id": "O2", "texto": "Me gusta explorar ideas abstractas o teóricas.", "reverso": false}, {"id": "O3", "texto": "Prefiero rutinas conocidas antes que experiencias nuevas.", "reverso": true}, {"id": "O4", "texto": "Disfruto el arte, la música o la literatura.", "reverso": false}, {"id": "O5", "texto": "Me aburren las conversaciones sobre ideas filosóficas o abstractas.", "reverso": true}, {"id": "O6", "texto": "Me considero una persona curiosa.", "reverso": false}], "responsabilidad": [{"id": "C1b", "texto": "Cumplo mis tareas a tiempo.", "reverso": false}, {"id": "C2b", "texto": "Dejo las cosas para el último momento.", "reverso": true}, {"id": "C3b", "texto": "Sigo un plan aunque surjan distracciones.", "reverso": false}, {"id": "C4b", "texto": "Suelo dejar tareas a medias.", "reverso": true}, {"id": "C5b", "texto": "Presto atención a los detalles.", "reverso": false}, {"id": "C6b", "texto": "Soy desordenado/a con mis responsabilidades.", "reverso": true}], "extraversion": [{"id": "E1b", "texto": "Disfruto ser el centro de atención en un grupo.", "reverso": false}, {"id": "E2b", "texto": "Prefiero pasar tiempo solo/a antes que en grupo.", "reverso": true}, {"id": "E3b", "texto": "Me energiza estar rodeado de gente.", "reverso": false}, {"id": "E4b", "texto": "Me cuesta iniciar conversaciones con desconocidos.", "reverso": true}, {"id": "E5b", "texto": "Hablo con facilidad en situaciones sociales nuevas.", "reverso": false}, {"id": "E6b", "texto": "Prefiero actividades tranquilas y silenciosas.", "reverso": true}], "amabilidad": [{"id": "A1b", "texto": "Me preocupo genuinamente por el bienestar de otras personas.", "reverso": false}, {"id": "A2b", "texto": "Tiendo a criticar a las personas fácilmente.", "reverso": true}, {"id": "A3b", "texto": "Confío en las intenciones de los demás.", "reverso": false}, {"id": "A4b", "texto": "Me cuesta ponerme en el lugar de otra persona.", "reverso": true}, {"id": "A5b", "texto": "Disfruto cooperar antes que competir.", "reverso": false}, {"id": "A6b", "texto": "Suelo ser cortante o brusco/a con los demás.", "reverso": true}], "estabilidad_emocional": [{"id": "N1", "texto": "Me mantengo tranquilo/a bajo presión.", "reverso": false}, {"id": "N2", "texto": "Me estreso con facilidad ante los problemas.", "reverso": true}, {"id": "N3", "texto": "Recupero mi ánimo rápido después de un contratiempo.", "reverso": false}, {"id": "N4", "texto": "Me preocupo constantemente por cosas que podrían salir mal.", "reverso": true}, {"id": "N5", "texto": "Rara vez me siento abrumado/a por mis responsabilidades.", "reverso": false}, {"id": "N6", "texto": "Mis emociones cambian bruscamente durante el día.", "reverso": true}]};
+const OPEN_QUESTIONS = [{"id": "AB1", "texto": "Describe una actividad (académica, laboral, personal o de hobby) en la que hayas perdido la noción del tiempo. ¿Qué estabas haciendo?"}, {"id": "AB2", "texto": "Si pudieras resolver un problema de tu comunidad, país o entorno inmediato, ¿cuál elegirías y por qué?"}, {"id": "AB3", "texto": "¿Qué tipo de tareas evitas siempre que tienes la opción, incluso si sabes que \"debes\" hacerlas?"}, {"id": "AB4", "texto": "Cuéntame sobre un logro, grande o pequeño, del que te sientas orgulloso/a. ¿Qué parte del proceso disfrutaste más?"}, {"id": "AB5", "texto": "Si el dinero y el \"qué dirán\" no fueran un factor, ¿qué estudiarías o a qué te dedicarías?"}];
+const CAREERS = [{"id": "ing_ambiental", "nombre": "Licenciatura en Ingeniería Ambiental", "facultad": "Ingeniería Civil", "completa_en_azuero": false, "anios_en_azuero": "I, II", "riasec": {"R": 78, "I": 75, "A": 20, "S": 40, "E": 25, "C": 45}, "big5": {"apertura": 65, "responsabilidad": 70, "extraversion": 40, "amabilidad": 60, "estabilidad": 55}, "notas": "Perfil investigador-realista, con componente social por su vinculo con impacto comunitario/ambiental."}, {"id": "ing_civil", "nombre": "Licenciatura en Ingeniería Civil", "facultad": "Ingeniería Civil", "completa_en_azuero": false, "anios_en_azuero": "I, II, III", "riasec": {"R": 85, "I": 65, "A": 15, "S": 25, "E": 35, "C": 55}, "big5": {"apertura": 50, "responsabilidad": 80, "extraversion": 40, "amabilidad": 45, "estabilidad": 60}, "notas": "Alta demanda de precision, responsabilidad y tolerancia a la presion (obra, plazos, normativa)."}, {"id": "ing_maritima_portuaria", "nombre": "Licenciatura en Ingeniería Marítima y Portuaria", "facultad": "Ingeniería Civil", "completa_en_azuero": false, "anios_en_azuero": "I, II", "riasec": {"R": 78, "I": 55, "A": 10, "S": 30, "E": 45, "C": 50}, "big5": {"apertura": 55, "responsabilidad": 70, "extraversion": 50, "amabilidad": 45, "estabilidad": 60}, "notas": "Combina logistica, operaciones y entorno fisico/portuario; tolerancia a entornos cambiantes."}, {"id": "ing_admin_proyectos_construccion", "nombre": "Ingeniería en Administración de Proyectos de Construcción", "facultad": "Ingeniería Civil", "completa_en_azuero": false, "anios_en_azuero": "I, II, III", "riasec": {"R": 65, "I": 45, "A": 15, "S": 35, "E": 60, "C": 65}, "big5": {"apertura": 50, "responsabilidad": 80, "extraversion": 55, "amabilidad": 50, "estabilidad": 60}, "notas": "Hibrido tecnico-gerencial: mitad obra, mitad gestion de personas/presupuestos/tiempos."}, {"id": "edificaciones", "nombre": "Licenciatura en Edificaciones", "facultad": "Ingeniería Civil", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 80, "I": 50, "A": 25, "S": 20, "E": 30, "C": 55}, "big5": {"apertura": 55, "responsabilidad": 70, "extraversion": 35, "amabilidad": 40, "estabilidad": 55}, "notas": "Perfil realista con dosis de diseno/dibujo tecnico (componente artistico moderado)."}, {"id": "saneamiento_ambiente", "nombre": "Licenciatura en Saneamiento y Ambiente", "facultad": "Ingeniería Civil", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 70, "I": 60, "A": 10, "S": 45, "E": 20, "C": 50}, "big5": {"apertura": 55, "responsabilidad": 70, "extraversion": 40, "amabilidad": 60, "estabilidad": 55}, "notas": "Vocacion de servicio comunitario/salud publica combinada con trabajo tecnico de campo."}, {"id": "topografia", "nombre": "Licenciatura en Topografía", "facultad": "Ingeniería Civil", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 82, "I": 45, "A": 15, "S": 15, "E": 25, "C": 60}, "big5": {"apertura": 40, "responsabilidad": 75, "extraversion": 30, "amabilidad": 40, "estabilidad": 55}, "notas": "Trabajo de campo tecnico-preciso, poca ambiguedad, alto orden/metodo."}, {"id": "ing_electromecanica", "nombre": "Licenciatura en Ingeniería Electromecánica", "facultad": "Ingeniería Eléctrica", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 85, "I": 65, "A": 10, "S": 15, "E": 25, "C": 45}, "big5": {"apertura": 55, "responsabilidad": 75, "extraversion": 30, "amabilidad": 35, "estabilidad": 55}, "notas": "Fuerte componente de resolucion de problemas mecanicos/electricos combinados."}, {"id": "ing_electronica_telecom", "nombre": "Licenciatura en Ingeniería Electrónica y Telecomunicaciones", "facultad": "Ingeniería Eléctrica", "completa_en_azuero": false, "anios_en_azuero": "I, II, III, IV", "riasec": {"R": 70, "I": 82, "A": 15, "S": 15, "E": 30, "C": 45}, "big5": {"apertura": 65, "responsabilidad": 70, "extraversion": 30, "amabilidad": 35, "estabilidad": 55}, "notas": "Perfil investigador-realista, afinidad por sistemas abstractos (senales, redes)."}, {"id": "electronica_sistemas_comunicacion", "nombre": "Licenciatura en Electrónica y Sistemas de Comunicación", "facultad": "Ingeniería Eléctrica", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 70, "I": 78, "A": 15, "S": 15, "E": 30, "C": 45}, "big5": {"apertura": 65, "responsabilidad": 70, "extraversion": 30, "amabilidad": 35, "estabilidad": 55}, "notas": "Similar a electronica/telecom, foco algo mas aplicado que teorico."}, {"id": "ing_industrial", "nombre": "Licenciatura en Ingeniería Industrial", "facultad": "Ingeniería Industrial", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 55, "I": 60, "A": 15, "S": 35, "E": 60, "C": 70}, "big5": {"apertura": 55, "responsabilidad": 80, "extraversion": 50, "amabilidad": 45, "estabilidad": 60}, "notas": "Optimizacion de procesos y personas; hibrido entre lo tecnico y lo gerencial."}, {"id": "mercadeo_negocios_internacionales", "nombre": "Licenciatura en Mercadeo y Negocios Internacionales", "facultad": "Ingeniería Industrial", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 15, "I": 35, "A": 45, "S": 65, "E": 85, "C": 45}, "big5": {"apertura": 70, "responsabilidad": 65, "extraversion": 80, "amabilidad": 60, "estabilidad": 55}, "notas": "Perfil emprendedor-social dominante; alta extraversion y apertura, comodidad con la persuasion y el cambio."}, {"id": "logistica_transporte_multimodal", "nombre": "Licenciatura en Logística y Transporte Multimodal", "facultad": "Ingeniería Industrial", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 40, "I": 45, "A": 10, "S": 30, "E": 55, "C": 78}, "big5": {"apertura": 45, "responsabilidad": 80, "extraversion": 45, "amabilidad": 40, "estabilidad": 60}, "notas": "Convencional-emprendedor: orden, planificacion, cadena de suministro, presion de tiempos."}, {"id": "ing_mecanica", "nombre": "Licenciatura en Ingeniería Mecánica", "facultad": "Ingeniería Mecánica", "completa_en_azuero": false, "anios_en_azuero": "I, II, III", "riasec": {"R": 85, "I": 68, "A": 10, "S": 15, "E": 25, "C": 45}, "big5": {"apertura": 55, "responsabilidad": 75, "extraversion": 30, "amabilidad": 35, "estabilidad": 55}, "notas": "Clasico realista-investigador; afinidad por sistemas fisicos y mecanismos."}, {"id": "ing_naval", "nombre": "Licenciatura en Ingeniería Naval", "facultad": "Ingeniería Mecánica", "completa_en_azuero": false, "anios_en_azuero": "I, II, III", "riasec": {"R": 82, "I": 60, "A": 10, "S": 15, "E": 30, "C": 45}, "big5": {"apertura": 55, "responsabilidad": 75, "extraversion": 35, "amabilidad": 35, "estabilidad": 60}, "notas": "Similar a mecanica con especializacion en sistemas navales/maritimos."}, {"id": "ing_energia_ambiente", "nombre": "Licenciatura en Ingeniería de Energía y Ambiente", "facultad": "Ingeniería Mecánica", "completa_en_azuero": false, "anios_en_azuero": "I, II, III", "riasec": {"R": 65, "I": 78, "A": 15, "S": 35, "E": 30, "C": 45}, "big5": {"apertura": 65, "responsabilidad": 70, "extraversion": 35, "amabilidad": 50, "estabilidad": 55}, "notas": "Investigador-realista con motivacion hacia sostenibilidad/impacto ambiental."}, {"id": "ing_aeronautica", "nombre": "Licenciatura en Ingeniería Aeronáutica", "facultad": "Ingeniería Mecánica", "completa_en_azuero": false, "anios_en_azuero": "I, II, III", "riasec": {"R": 80, "I": 80, "A": 10, "S": 10, "E": 30, "C": 45}, "big5": {"apertura": 65, "responsabilidad": 80, "extraversion": 30, "amabilidad": 30, "estabilidad": 65}, "notas": "Alta exigencia tecnica y precision; tolerancia a la complejidad y al detalle critico."}, {"id": "mecanica_industrial", "nombre": "Licenciatura en Mecánica Industrial", "facultad": "Ingeniería Mecánica", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 82, "I": 50, "A": 10, "S": 15, "E": 30, "C": 55}, "big5": {"apertura": 45, "responsabilidad": 75, "extraversion": 30, "amabilidad": 35, "estabilidad": 55}, "notas": "Mas aplicado/practico que teorico; mantenimiento y produccion industrial."}, {"id": "ing_sistemas_computacion", "nombre": "Licenciatura en Ingeniería de Sistemas y Computación", "facultad": "Ingeniería de Sistemas Computacionales", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 40, "I": 82, "A": 30, "S": 20, "E": 35, "C": 60}, "big5": {"apertura": 70, "responsabilidad": 70, "extraversion": 30, "amabilidad": 35, "estabilidad": 55}, "notas": "Investigador dominante, alta apertura, pensamiento abstracto/logico."}, {"id": "desarrollo_software", "nombre": "Licenciatura en Desarrollo de Software", "facultad": "Ingeniería de Sistemas Computacionales", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 25, "I": 78, "A": 45, "S": 20, "E": 35, "C": 55}, "big5": {"apertura": 75, "responsabilidad": 65, "extraversion": 30, "amabilidad": 35, "estabilidad": 55}, "notas": "Investigador-artistico: logica combinada con creatividad de diseno de producto/UX."}, {"id": "redes_informaticas", "nombre": "Licenciatura en Redes Informáticas", "facultad": "Ingeniería de Sistemas Computacionales", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 45, "I": 65, "A": 10, "S": 20, "E": 25, "C": 75}, "big5": {"apertura": 55, "responsabilidad": 75, "extraversion": 30, "amabilidad": 35, "estabilidad": 55}, "notas": "Convencional-investigador: infraestructura, orden, procedimientos, documentacion tecnica."}, {"id": "ciberseguridad", "nombre": "Licenciatura en Ciberseguridad", "facultad": "Ingeniería de Sistemas Computacionales", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 40, "I": 75, "A": 15, "S": 15, "E": 30, "C": 72}, "big5": {"apertura": 60, "responsabilidad": 80, "extraversion": 25, "amabilidad": 30, "estabilidad": 65}, "notas": "Perfil analitico-meticuloso, tolerancia a la ambiguedad en amenazas, pensamiento adversarial."}, {"id": "comunicacion_ejecutiva_bilingue", "nombre": "Licenciatura en Comunicación Ejecutiva Bilingüe", "facultad": "Ciencia y Tecnología", "completa_en_azuero": true, "anios_en_azuero": "completa", "riasec": {"R": 10, "I": 30, "A": 65, "S": 80, "E": 55, "C": 40}, "big5": {"apertura": 70, "responsabilidad": 65, "extraversion": 80, "amabilidad": 70, "estabilidad": 55}, "notas": "Social-artistico dominante; comodidad con idiomas, oratoria y relaciones interpersonales."}, {"id": "ing_forestal", "nombre": "Licenciatura en Ingeniería Forestal", "facultad": "Ciencia y Tecnología", "completa_en_azuero": false, "anios_en_azuero": "no especificado en pagina fuente, verificar con coordinacion", "riasec": {"R": 78, "I": 68, "A": 15, "S": 40, "E": 20, "C": 40}, "big5": {"apertura": 60, "responsabilidad": 65, "extraversion": 35, "amabilidad": 55, "estabilidad": 55}, "notas": "Realista-investigador con vocacion ambiental/conservacion; trabajo de campo prolongado."}];
+// ============ CONFIG DE DIMENSIONES ============
+const DIM_INFO_RIASEC = {
+  R: { nombre: "Realista", desc: "Trabajo práctico, manual y con objetos físicos" },
+  I: { nombre: "Investigador", desc: "Análisis, lógica y resolución de problemas" },
+  A: { nombre: "Artístico", desc: "Creatividad y expresión personal" },
+  S: { nombre: "Social", desc: "Ayudar, enseñar y trabajar con personas" },
+  E: { nombre: "Emprendedor", desc: "Liderazgo, persuasión e iniciativa" },
+  C: { nombre: "Convencional", desc: "Orden, estructura y procedimientos" },
+};
+const DIM_INFO_BIG5 = {
+  apertura: { nombre: "Apertura a la experiencia" },
+  responsabilidad: { nombre: "Responsabilidad" },
+  extraversion: { nombre: "Extraversión" },
+  amabilidad: { nombre: "Amabilidad" },
+  estabilidad_emocional: { nombre: "Estabilidad emocional" },
+};
+const RIASEC_ORDER = ["R", "I", "A", "S", "E", "C"];
+
+// ============ CONSTRUCCION DE PAGINAS ============
+function construirPaginas() {
+  const paginas = [];
+  RIASEC_ORDER.forEach((dim) => {
+    paginas.push({
+      tipo: "likert",
+      titulo: DIM_INFO_RIASEC[dim].nombre,
+      subtitulo: DIM_INFO_RIASEC[dim].desc,
+      items: RIASEC_BANK[dim],
+    });
+  });
+  Object.keys(BIG5_BANK).forEach((rasgo) => {
+    paginas.push({
+      tipo: "likert",
+      titulo: DIM_INFO_BIG5[rasgo].nombre,
+      subtitulo: "Estilo de trabajo y personalidad",
+      items: BIG5_BANK[rasgo],
+    });
+  });
+  paginas.push({ tipo: "abiertas", titulo: "Para conocerte mejor", items: OPEN_QUESTIONS });
+  return paginas;
+}
+const PAGINAS = construirPaginas();
+
+// ============ ESTADO ============
+// Reemplaza esto con la URL de tu Google Apps Script Web App (ver instrucciones del proyecto).
+// Mientras esté vacío, el registro agregado simplemente no se envía a ningún lado.
+const SHEETS_WEBAPP_URL = "";
+
+let respuestas = {};
+let respuestasAbiertas = {};
+let pantalla = "intro"; // intro | pregunta | resultados
+let paginaActual = 0;
+let estudiante = { nombre: "", carreraActualId: "", correo: "" };
+let consentimientoIA = false;
+let consentimientoEstadisticas = false;
+let mostrarRankingCompleto = false;
+let statsEnviadas = false;
+let iaEstado = "pendiente"; // pendiente | cargando | listo | error
+let iaTexto = "";
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+const STORAGE_KEY = "brujula_utp_progreso_v1";
+
+function guardarProgreso() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      respuestas, respuestasAbiertas, paginaActual, estudiante, consentimientoIA, consentimientoEstadisticas, pantalla,
+    }));
+  } catch (e) { /* localStorage no disponible, seguimos sin guardar */ }
+}
+
+function cargarProgresoGuardado() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function borrarProgresoGuardado() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) { /* nada que hacer */ }
+}
+
+// ============ MOTOR DE SCORING (portado de scoring.js) ============
+function normalizarRespuesta(valorLikert, esReverso) {
+  const valor = esReverso ? 6 - valorLikert : valorLikert;
+  return ((valor - 1) / 4) * 100;
+}
+function construirVectorRiasec(resp) {
+  const vector = {};
+  RIASEC_ORDER.forEach((dim) => {
+    const valores = RIASEC_BANK[dim].map((item) => normalizarRespuesta(resp[item.id], false));
+    vector[dim] = valores.reduce((a, b) => a + b, 0) / valores.length;
+  });
+  return vector;
+}
+function construirVectorBig5(resp) {
+  const vector = {};
+  Object.keys(BIG5_BANK).forEach((rasgo) => {
+    const valores = BIG5_BANK[rasgo].map((item) => normalizarRespuesta(resp[item.id], item.reverso));
+    vector[rasgo] = valores.reduce((a, b) => a + b, 0) / valores.length;
+  });
+  return vector;
+}
+function similitudCoseno(vecA, vecB) {
+  const claves = Object.keys(vecA);
+  let dot = 0, normA = 0, normB = 0;
+  claves.forEach((k) => {
+    dot += vecA[k] * vecB[k];
+    normA += vecA[k] * vecA[k];
+    normB += vecB[k] * vecB[k];
+  });
+  if (normA === 0 || normB === 0) return 0;
+  return dot / (Math.sqrt(normA) * Math.sqrt(normB));
+}
+function calcularMatch(resp) {
+  const PESO_RIASEC = 0.7, PESO_BIG5 = 0.3;
+  const vUsuarioRiasec = construirVectorRiasec(resp);
+  const vUsuarioBig5 = construirVectorBig5(resp);
+  const resultados = CAREERS.map((carrera) => {
+    const perfilBig5 = {
+      apertura: carrera.big5.apertura,
+      responsabilidad: carrera.big5.responsabilidad,
+      extraversion: carrera.big5.extraversion,
+      amabilidad: carrera.big5.amabilidad,
+      estabilidad_emocional: carrera.big5.estabilidad,
+    };
+    const simRiasec = similitudCoseno(vUsuarioRiasec, carrera.riasec);
+    const simBig5 = similitudCoseno(vUsuarioBig5, perfilBig5);
+    const scoreFinal = (simRiasec * PESO_RIASEC + simBig5 * PESO_BIG5) * 100;
+    return { ...carrera, score_final: Math.round(scoreFinal * 10) / 10 };
+  });
+  resultados.sort((a, b) => b.score_final - a.score_final);
+  return { vectorRiasec: vUsuarioRiasec, vectorBig5: vUsuarioBig5, ranking: resultados };
+}
+
+// ============ HEXAGONO SVG (Holland hexagon) ============
+function hexPoint(value, index, cx, cy, maxR) {
+  const angle = (Math.PI / 180) * (-90 + index * 60);
+  const r = (Math.max(0, Math.min(100, value)) / 100) * maxR;
+  return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
+}
+function renderHexSVG(vectorA, vectorB, labelA, labelB) {
+  const cx = 150, cy = 150, maxR = 110;
+  const anillos = [0.25, 0.5, 0.75, 1].map((f) => {
+    const pts = RIASEC_ORDER.map((_, i) => hexPoint(100 * f, i, cx, cy, maxR).join(",")).join(" ");
+    return `<polygon points="${pts}" fill="none" stroke="var(--line-dim)" stroke-width="1"/>`;
+  }).join("");
+  const ejes = RIASEC_ORDER.map((_, i) => {
+    const [x, y] = hexPoint(100, i, cx, cy, maxR);
+    return `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="var(--line-dim)" stroke-width="1"/>`;
+  }).join("");
+  const labels = RIASEC_ORDER.map((dim, i) => {
+    const [x, y] = hexPoint(122, i, cx, cy, maxR);
+    return `<text x="${x}" y="${y}" fill="var(--text-dim)" font-family="IBM Plex Mono" font-size="12" text-anchor="middle" dominant-baseline="middle">${dim}</text>`;
+  }).join("");
+  const polyFrom = (vec, color, opacity) => {
+    const pts = RIASEC_ORDER.map((dim, i) => hexPoint(vec[dim], i, cx, cy, maxR).join(",")).join(" ");
+    return `<polygon points="${pts}" fill="${color}" fill-opacity="${opacity}" stroke="${color}" stroke-width="2"/>`;
+  };
+  let poly = "";
+  if (vectorB) poly += polyFrom(vectorB, "var(--line)", 0.18);
+  poly += polyFrom(vectorA, "var(--brass)", 0.28);
+  return `<svg width="300" height="300" viewBox="0 0 300 300">${anillos}${ejes}${poly}${labels}</svg>`;
+}
+
+// ============ RENDER ============
+// ============ REGISTRO AGREGADO INSTITUCIONAL (Google Sheets vía Apps Script) ============
+async function registrarResultadoAgregado(resultado) {
+  if (!SHEETS_WEBAPP_URL || !consentimientoEstadisticas) return;
+  const puestoActual = estudiante.carreraActualId
+    ? resultado.ranking.findIndex((c) => c.id === estudiante.carreraActualId) + 1
+    : "";
+  try {
+    await fetch(SHEETS_WEBAPP_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        marca_tiempo: new Date().toISOString(),
+        correo: estudiante.correo || "",
+        carrera_actual_id: estudiante.carreraActualId || "",
+        puesto_carrera_actual: puestoActual,
+        mejor_match_id: resultado.ranking[0].id,
+        mejor_match_nombre: resultado.ranking[0].nombre,
+        score_mejor_match: resultado.ranking[0].score_final,
+        respuesta_uniforme: detectarRespuestaUniforme(respuestas),
+      }),
+    });
+  } catch (e) {
+    // Fallo silencioso: nunca debe romper la experiencia del estudiante por esto.
+  }
+}
+
+function render() {
+  const app = document.getElementById("app");
+  if (pantalla === "intro") app.innerHTML = htmlIntro();
+  else if (pantalla === "pregunta") app.innerHTML = htmlPagina(paginaActual);
+  else if (pantalla === "resultados") {
+    app.innerHTML = htmlResultados();
+    if (!statsEnviadas) {
+      statsEnviadas = true;
+      registrarResultadoAgregado(calcularMatch(respuestas));
+    }
+    actualizarBloqueIA();
+  }
+  bindEvents();
+}
+
+function actualizarBloqueIA() {
+  const el = document.getElementById("ia-texto");
+  if (!el) return; // sin consentimiento, no existe la tarjeta de IA
+  if (iaEstado === "listo") {
+    el.textContent = iaTexto;
+    el.style.fontStyle = "normal";
+    el.style.color = "var(--text)";
+    return;
+  }
+  if (iaEstado === "error") {
+    mostrarErrorIA();
+    return;
+  }
+  if (iaEstado === "cargando") return; // ya se disparo, esperando respuesta
+  iaEstado = "cargando";
+  const top3 = calcularMatch(respuestas).ranking.slice(0, 3);
+  generarLecturaIA(top3);
+}
+
+function htmlIntro() {
+  const opcionesCarrera = CAREERS.map((c) => `<option value="${c.id}">${c.nombre}</option>`).join("");
+  const guardado = cargarProgresoGuardado();
+  const bannerResume = (guardado && Object.keys(guardado.respuestas || {}).length > 0) ? `
+    <div class="banner">
+      <span>Tienes un test sin terminar (página ${(guardado.paginaActual || 0) + 1} de ${PAGINAS.length}).</span>
+      <button class="btn" id="btn-continuar-guardado" style="padding:8px 14px; font-size:13px;">Continuar donde quedé →</button>
+    </div>
+  ` : "";
+  return `
+    ${bannerResume}
+    <div class="eyebrow">Centro Regional de Azuero · UTP</div>
+    <h1>Brújula UTP</h1>
+    <p>Un test de orientación vocacional basado en el modelo RIASEC de Holland y el modelo Big Five de personalidad,
+    calibrado contra las 24 carreras que se ofrecen en el Centro Regional de Azuero.</p>
+    <div class="card">
+      <h2>Antes de empezar</h2>
+      <p>• Son ${RIASEC_ORDER.reduce((n, d) => n + RIASEC_BANK[d].length, 0) + Object.keys(BIG5_BANK).reduce((n, r) => n + BIG5_BANK[r].length, 0)} preguntas de escala (1 a 5) y 5 preguntas abiertas — unos 15-20 minutos.</p>
+      <p>• No hay respuestas correctas o incorrectas. Responde con lo que sueles hacer o sentir, no lo que crees que "deberías".</p>
+      <p>• El resultado es un punto de partida para conversar con orientación académica, no un veredicto definitivo.</p>
+      <p>• Tu progreso se guarda automáticamente en este navegador — puedes cerrar la pestaña y continuar después.</p>
+    </div>
+    <div class="card">
+      <h2>Un par de datos opcionales</h2>
+      <p>Si ya estás matriculado en una carrera, selecciónala — al final te mostramos qué tan alineada está con tu resultado.</p>
+      <div class="question" style="border-bottom:none; padding-top:0;">
+        <div class="question-text">¿Qué carrera estás estudiando actualmente (si aplica)?</div>
+        <select id="select-carrera-actual" style="width:100%; background:var(--ink-3); border:1px solid var(--line-dim); border-radius:8px; color:var(--text); font-family:'IBM Plex Sans', sans-serif; font-size:14px; padding:10px;">
+          <option value="">No estoy matriculado / prefiero no decir</option>
+          ${opcionesCarrera}
+        </select>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="check-consentimiento" ${consentimientoIA ? "checked" : ""}>
+        <label for="check-consentimiento">Acepto que mis 5 respuestas abiertas se envíen a un servicio de IA (Anthropic) para generar una
+        lectura personalizada del resultado. Si no marcas esto, el test funciona igual, solo sin ese párrafo final.</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="check-estadisticas" ${consentimientoEstadisticas ? "checked" : ""}>
+        <label for="check-estadisticas">Acepto que un resumen de mi resultado (sin mis respuestas abiertas: solo mi mejor match, mi carrera
+        actual si la diste, y si hay desalineación) se guarde para que la universidad tenga estadísticas agregadas sobre deserción vocacional.</label>
+      </div>
+      <div class="question" style="border-bottom:none;">
+        <div class="question-text">Correo institucional (opcional — solo si aceptaste lo anterior y quieres que orientación académica pueda darte seguimiento)</div>
+        <input type="email" id="input-correo" placeholder="tu-correo@utp.ac.pa" style="width:100%; background:var(--ink-3); border:1px solid var(--line-dim); border-radius:8px; color:var(--text); font-family:'IBM Plex Sans', sans-serif; font-size:14px; padding:10px;">
+      </div>
+    </div>
+    <div class="btn-row" style="justify-content:flex-end;">
+      <button class="btn" id="btn-empezar">Comenzar →</button>
+    </div>
+  `;
+}
+
+function htmlPagina(idx) {
+  const pag = PAGINAS[idx];
+  const totalPaginas = PAGINAS.length;
+  const progresoPct = Math.round((idx / totalPaginas) * 100);
+  let contenido = "";
+
+  if (pag.tipo === "likert") {
+    contenido = pag.items.map((item, i) => {
+      const seleccion = respuestas[item.id];
+      const opciones = [1, 2, 3, 4, 5].map((v) => `
+        <div class="likert-opt ${seleccion === v ? "selected" : ""}" data-id="${item.id}" data-val="${v}">${v}</div>
+      `).join("");
+      return `
+        <div class="question">
+          <div class="question-text"><span class="qnum">${String(i + 1).padStart(2, "0")}</span>${item.texto}</div>
+          <div class="likert-row">
+            <div class="likert-label">Desacuerdo</div>
+            <div class="likert-options">${opciones}</div>
+            <div class="likert-label right">De acuerdo</div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  } else {
+    contenido = pag.items.map((item, i) => `
+      <div class="question">
+        <div class="question-text"><span class="qnum">${String(i + 1).padStart(2, "0")}</span>${item.texto}</div>
+        <textarea data-abierta-id="${item.id}" placeholder="Escribe con confianza, sin filtro...">${escapeHtml(respuestasAbiertas[item.id] || "")}</textarea>
+      </div>
+    `).join("");
+  }
+
+  const completa = paginaCompleta(idx);
+  const esUltima = idx === totalPaginas - 1;
+
+  return `
+    <div class="progress-wrap">
+      <span>PÁGINA ${idx + 1} / ${totalPaginas}</span>
+      <div class="progress-bar"><div class="progress-fill" style="width:${progresoPct}%"></div></div>
+      <span>${progresoPct}%</span>
+    </div>
+    <div class="eyebrow">${pag.tipo === "likert" ? "Bloque de interés / rasgo" : "Reflexión abierta"}</div>
+    <h2>${pag.titulo}</h2>
+    ${pag.subtitulo ? `<p>${pag.subtitulo}</p>` : ""}
+    <div class="card">${contenido}</div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" id="btn-atras" ${idx === 0 ? "disabled" : ""}>← Atrás</button>
+      <button class="btn" id="btn-siguiente" ${completa ? "" : "disabled"}>${esUltima ? "Ver mis resultados →" : "Siguiente →"}</button>
+    </div>
+  `;
+}
+
+function paginaCompleta(idx) {
+  const pag = PAGINAS[idx];
+  if (pag.tipo === "likert") return pag.items.every((item) => respuestas[item.id] !== undefined);
+  return pag.items.every((item) => (respuestasAbiertas[item.id] || "").trim().length > 0);
+}
+
+function detectarRespuestaUniforme(resp) {
+  const valores = Object.values(resp);
+  if (valores.length < 10) return false;
+  const media = valores.reduce((a, b) => a + b, 0) / valores.length;
+  const varianza = valores.reduce((a, b) => a + (b - media) ** 2, 0) / valores.length;
+  return Math.sqrt(varianza) < 0.5;
+}
+
+function htmlResultados() {
+  const resultado = calcularMatch(respuestas);
+  const top = resultado.ranking.slice(0, 5);
+  const mejor = top[0];
+  const maxScore = top[0].score_final;
+  const esUniforme = detectarRespuestaUniforme(respuestas);
+
+  const tarjetas = top.map((c, i) => `
+    <div class="career-card ${i === 0 ? "top" : ""}">
+      <div class="career-head">
+        <div>
+          <div class="career-rank">MATCH #${i + 1}</div>
+          <div class="career-name">${c.nombre}</div>
+        </div>
+        <div class="career-score">${c.score_final}</div>
+      </div>
+      <div class="career-meta">${c.facultad}</div>
+      <div class="score-bar"><div class="score-fill" style="width:${(c.score_final / maxScore) * 100}%"></div></div>
+      ${!c.completa_en_azuero ? `<div class="badge warn">Solo ${c.anios_en_azuero} en Azuero — resto en Campus Central</div>` : `<div class="badge">Carrera completa en Azuero</div>`}
+    </div>
+  `).join("");
+
+  const filasRankingCompleto = resultado.ranking.map((c, i) => `
+    <div class="mini-row">
+      <span>#${i + 1} ${c.nombre}</span>
+      <span style="font-family:'IBM Plex Mono', monospace; color:var(--brass-light);">${c.score_final}</span>
+    </div>
+  `).join("");
+
+  const carreraActual = estudiante.carreraActualId
+    ? resultado.ranking.find((c) => c.id === estudiante.carreraActualId)
+    : null;
+  const puestoActual = carreraActual ? resultado.ranking.findIndex((c) => c.id === estudiante.carreraActualId) + 1 : null;
+
+  const tarjetaComparacion = carreraActual ? `
+    <div class="card">
+      <h3>Lo que estudias hoy vs. tu resultado</h3>
+      <p>Actualmente estudias <strong style="color:var(--text);">${carreraActual.nombre}</strong>.
+      En este test, quedó en el puesto <strong style="color:var(--brass-light);">#${puestoActual} de 24</strong>,
+      con una compatibilidad de <strong style="color:var(--brass-light);">${carreraActual.score_final}</strong>.
+      ${puestoActual <= 3
+        ? "Está entre tus mejores matches — buena señal de que vas alineado con tus intereses."
+        : puestoActual <= 8
+          ? "Está en una posición media — ni un desajuste fuerte, ni tu match ideal. Vale la pena que lo converses con orientación académica."
+          : "Hay una diferencia notable entre tu perfil de intereses y esta carrera. Eso no significa que debas cambiarte — pero sí es información real que antes no tenías, y que vale la pena conversar con un orientador antes de decidir cualquier cosa."}
+      </p>
+    </div>
+  ` : "";
+
+  const bannerUniforme = esUniforme ? `
+    <div class="banner alerta">
+      <span>⚠ Tus respuestas variaron muy poco entre sí. Esto puede pasar cuando se responde rápido o sin pensarlo mucho,
+      y reduce la precisión del resultado. Considera repetirlo con más calma antes de tomarlo como definitivo.</span>
+    </div>
+  ` : "";
+
+  const cardIA = consentimientoIA ? `
+    <div class="card" id="ia-card">
+      <h3>Lectura de tus respuestas abiertas</h3>
+      <p id="ia-texto" style="color:var(--text-dim); font-style:italic;">Generando lectura personalizada...</p>
+    </div>
+  ` : `
+    <div class="card">
+      <h3>Sobre tus respuestas abiertas</h3>
+      <p>No marcaste la casilla de consentimiento para enviarlas a la IA, así que no se generó una lectura automática.
+      Quedan guardadas en tu navegador para que las repases con un orientador académico si quieres.</p>
+    </div>
+  `;
+
+  return `
+    <div class="eyebrow">Resultado</div>
+    <h1>Tu perfil vocacional</h1>
+    <p>Comparamos tu perfil de intereses (RIASEC) contra los 24 perfiles de carrera de Azuero. Esto es un punto de partida
+    para la conversación con orientación académica — no una sentencia.</p>
+    ${bannerUniforme}
+    <div class="card" style="text-align:center;">
+      <div class="hex-wrap">${renderHexSVG(resultado.vectorRiasec, mejor.riasec)}</div>
+      <div class="legend"><span class="u">Tu perfil</span><span class="c">${mejor.nombre}</span></div>
+    </div>
+    <h2 style="margin-top:24px;">Tus 5 mejores matches</h2>
+    ${tarjetas}
+    <div class="card">
+      <button class="link-toggle" id="btn-toggle-ranking">${mostrarRankingCompleto ? "▲ Ocultar ranking completo" : "▼ Ver ranking completo (24 carreras)"}</button>
+      ${mostrarRankingCompleto ? `<div style="margin-top:12px;">${filasRankingCompleto}</div>` : ""}
+    </div>
+    ${tarjetaComparacion}
+    ${cardIA}
+    <div class="btn-row">
+      <button class="btn btn-ghost" id="btn-reiniciar">↺ Repetir el test</button>
+      <button class="btn" id="btn-imprimir">🖨 Guardar / imprimir resultado</button>
+    </div>
+  `;
+}
+
+// ============ ANALISIS CUALITATIVO CON IA (capa opcional) ============
+async function generarLecturaIA(top3) {
+  try {
+    const preguntasYRespuestas = OPEN_QUESTIONS.map(
+      (q) => `Pregunta: ${q.texto}\nRespuesta: ${respuestasAbiertas[q.id] || "(sin responder)"}`
+    ).join("\n\n");
+    const carrerasTexto = top3.map((c, i) => `${i + 1}. ${c.nombre} (score ${c.score_final})`).join("\n");
+
+    const prompt = `Eres un orientador vocacional cálido y directo, hablando con un estudiante universitario panameño.
+Con base en estas 5 respuestas abiertas y sus 3 mejores matches de carrera (calculados matemáticamente con RIASEC/Big Five),
+escribe un párrafo de 120-180 palabras en español, cercano y sin sonar a informe corporativo, que conecte 1-2 detalles
+concretos de sus respuestas con el resultado. No repitas los scores numéricos. No inventes datos que no estén en las respuestas.
+
+RESPUESTAS DEL ESTUDIANTE:
+${preguntasYRespuestas}
+
+MEJORES MATCHES:
+${carrerasTexto}`;
+
+    const response = await fetch("/api/analizar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt }),
+    });
+    if (!response.ok) throw new Error("Fallo la funcion serverless");
+    const data = await response.json();
+    if (!data.texto) throw new Error("Respuesta vacia");
+
+    iaEstado = "listo";
+    iaTexto = data.texto;
+    const el = document.getElementById("ia-texto");
+    if (el) {
+      el.textContent = iaTexto;
+      el.style.fontStyle = "normal";
+      el.style.color = "var(--text)";
+    }
+  } catch (e) {
+    iaEstado = "error";
+    mostrarErrorIA();
+  }
+}
+
+function mostrarErrorIA() {
+  const el = document.getElementById("ia-texto");
+  if (el) {
+    el.textContent = "No se pudo generar la lectura automática (revisa que ANTHROPIC_API_KEY esté configurada en Vercel, o que haya conexión). Tus respuestas abiertas quedan disponibles para que un orientador académico las lea directamente.";
+    el.style.fontStyle = "normal";
+    el.style.color = "var(--text-dim)";
+  }
+  const card = document.getElementById("ia-card");
+  if (card && !document.getElementById("ia-reintentar-wrap")) {
+    const wrap = document.createElement("div");
+    wrap.id = "ia-reintentar-wrap";
+    wrap.style.marginTop = "12px";
+    wrap.innerHTML = `<button class="btn btn-ghost" id="btn-reintentar-ia">↺ Reintentar</button>`;
+    card.appendChild(wrap);
+    document.getElementById("btn-reintentar-ia").addEventListener("click", () => {
+      iaEstado = "cargando";
+      const elTexto = document.getElementById("ia-texto");
+      if (elTexto) { elTexto.textContent = "Generando lectura personalizada..."; elTexto.style.fontStyle = "italic"; elTexto.style.color = "var(--text-dim)"; }
+      wrap.remove();
+      generarLecturaIA(calcularMatch(respuestas).ranking.slice(0, 3));
+    });
+  }
+}
+
+// ============ EVENTOS ============
+function bindEvents() {
+  const btnEmpezar = document.getElementById("btn-empezar");
+  if (btnEmpezar) btnEmpezar.addEventListener("click", () => {
+    const sel = document.getElementById("select-carrera-actual");
+    const check = document.getElementById("check-consentimiento");
+    const checkStats = document.getElementById("check-estadisticas");
+    const correo = document.getElementById("input-correo");
+    estudiante.carreraActualId = sel ? sel.value : "";
+    estudiante.correo = correo ? correo.value.trim() : "";
+    consentimientoIA = check ? check.checked : false;
+    consentimientoEstadisticas = checkStats ? checkStats.checked : false;
+    pantalla = "pregunta";
+    paginaActual = 0;
+    guardarProgreso();
+    render();
+  });
+
+  const btnContinuarGuardado = document.getElementById("btn-continuar-guardado");
+  if (btnContinuarGuardado) btnContinuarGuardado.addEventListener("click", () => {
+    const guardado = cargarProgresoGuardado();
+    if (guardado) {
+      respuestas = guardado.respuestas || {};
+      respuestasAbiertas = guardado.respuestasAbiertas || {};
+      paginaActual = guardado.paginaActual || 0;
+      estudiante = guardado.estudiante || { nombre: "", carreraActualId: "", correo: "" };
+      consentimientoIA = guardado.consentimientoIA || false;
+      consentimientoEstadisticas = guardado.consentimientoEstadisticas || false;
+      pantalla = "pregunta";
+      render();
+    }
+  });
+
+  document.querySelectorAll(".likert-opt").forEach((el) => {
+    el.addEventListener("click", () => {
+      respuestas[el.dataset.id] = parseInt(el.dataset.val, 10);
+      guardarProgreso();
+      render();
+    });
+  });
+
+  document.querySelectorAll("textarea[data-abierta-id]").forEach((el) => {
+    el.addEventListener("input", () => {
+      respuestasAbiertas[el.dataset.abiertaId] = el.value;
+      guardarProgreso();
+      const btn = document.getElementById("btn-siguiente");
+      if (btn) btn.disabled = !paginaCompleta(paginaActual);
+    });
+  });
+
+  const btnAtras = document.getElementById("btn-atras");
+  if (btnAtras) btnAtras.addEventListener("click", () => {
+    if (paginaActual > 0) { paginaActual -= 1; guardarProgreso(); render(); }
+  });
+
+  const btnSiguiente = document.getElementById("btn-siguiente");
+  if (btnSiguiente) btnSiguiente.addEventListener("click", () => {
+    if (paginaActual < PAGINAS.length - 1) {
+      paginaActual += 1;
+      guardarProgreso();
+      render();
+    } else {
+      pantalla = "resultados";
+      borrarProgresoGuardado();
+      render();
+    }
+  });
+
+  const btnReiniciar = document.getElementById("btn-reiniciar");
+  if (btnReiniciar) btnReiniciar.addEventListener("click", () => {
+    respuestas = {};
+    respuestasAbiertas = {};
+    estudiante = { nombre: "", carreraActualId: "", correo: "" };
+    consentimientoIA = false;
+    consentimientoEstadisticas = false;
+    mostrarRankingCompleto = false;
+    statsEnviadas = false;
+    iaEstado = "pendiente";
+    iaTexto = "";
+    paginaActual = 0;
+    pantalla = "intro";
+    borrarProgresoGuardado();
+    render();
+  });
+
+  const btnImprimir = document.getElementById("btn-imprimir");
+  if (btnImprimir) btnImprimir.addEventListener("click", () => window.print());
+
+  const btnToggleRanking = document.getElementById("btn-toggle-ranking");
+  if (btnToggleRanking) btnToggleRanking.addEventListener("click", () => {
+    mostrarRankingCompleto = !mostrarRankingCompleto;
+    render();
+  });
+}
+
+render();
+</script>
+</body>
+</html>
