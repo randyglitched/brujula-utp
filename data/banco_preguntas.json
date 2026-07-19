@@ -1,0 +1,392 @@
+{
+    "riasec":  {
+                   "R":  [
+                             {
+                                 "id":  "R1",
+                                 "texto":  "Disfruto reparar o armar objetos mecánicos o eléctricos."
+                             },
+                             {
+                                 "id":  "R2",
+                                 "texto":  "Prefiero actividades donde pueda usar mis manos y herramientas."
+                             },
+                             {
+                                 "id":  "R3",
+                                 "texto":  "Me atrae más resolver un problema físico que uno abstracto."
+                             },
+                             {
+                                 "id":  "R4",
+                                 "texto":  "Disfruto trabajar al aire libre o en talleres y laboratorios de campo."
+                             },
+                             {
+                                 "id":  "R5",
+                                 "texto":  "Me interesa entender cómo funcionan las máquinas por dentro."
+                             },
+                             {
+                                 "id":  "R6",
+                                 "texto":  "Prefiero seguir instrucciones técnicas precisas antes que improvisar."
+                             },
+                             {
+                                 "id":  "R7",
+                                 "texto":  "Me siento cómodo con tareas que requieren fuerza física o destreza manual."
+                             },
+                             {
+                                 "id":  "R8",
+                                 "texto":  "Disfruto construir, ensamblar o reparar cosas más que hablar de ideas."
+                             }
+                         ],
+                   "I":  [
+                             {
+                                 "id":  "I1",
+                                 "texto":  "Me gusta analizar datos o resolver problemas complejos."
+                             },
+                             {
+                                 "id":  "I2",
+                                 "texto":  "Disfruto entender el \"por qué\" detrás de los fenómenos naturales o tecnológicos."
+                             },
+                             {
+                                 "id":  "I3",
+                                 "texto":  "Prefiero investigar a fondo un tema antes de tomar una decisión."
+                             },
+                             {
+                                 "id":  "I4",
+                                 "texto":  "Me atraen las matemáticas, la física o la lógica."
+                             },
+                             {
+                                 "id":  "I5",
+                                 "texto":  "Disfruto formular hipótesis y comprobarlas con evidencia."
+                             },
+                             {
+                                 "id":  "I6",
+                                 "texto":  "Me gusta leer sobre ciencia o tecnología en mi tiempo libre."
+                             },
+                             {
+                                 "id":  "I7",
+                                 "texto":  "Prefiero trabajar de forma independiente en problemas técnicos."
+                             },
+                             {
+                                 "id":  "I8",
+                                 "texto":  "Me siento motivado al resolver acertijos o problemas complejos."
+                             }
+                         ],
+                   "A":  [
+                             {
+                                 "id":  "A1",
+                                 "texto":  "Disfruto expresar ideas de forma creativa (diseño, escritura, música, etc.)."
+                             },
+                             {
+                                 "id":  "A2",
+                                 "texto":  "Prefiero ambientes de trabajo flexibles, sin reglas rígidas."
+                             },
+                             {
+                                 "id":  "A3",
+                                 "texto":  "Me gusta imaginar soluciones poco convencionales."
+                             },
+                             {
+                                 "id":  "A4",
+                                 "texto":  "Disfruto crear contenido visual, escrito o audiovisual."
+                             },
+                             {
+                                 "id":  "A5",
+                                 "texto":  "Me identifico como una persona creativa u original."
+                             },
+                             {
+                                 "id":  "A6",
+                                 "texto":  "Prefiero tareas donde pueda innovar en vez de seguir un manual."
+                             },
+                             {
+                                 "id":  "A7",
+                                 "texto":  "Disfruto cuidar el diseño o la estética de lo que hago."
+                             },
+                             {
+                                 "id":  "A8",
+                                 "texto":  "Me atrae la idea de expresar mi personalidad a través de mi trabajo."
+                             }
+                         ],
+                   "S":  [
+                             {
+                                 "id":  "S1",
+                                 "texto":  "Disfruto ayudar a otras personas a resolver sus problemas."
+                             },
+                             {
+                                 "id":  "S2",
+                                 "texto":  "Me gusta enseñar, explicar o guiar a otros."
+                             },
+                             {
+                                 "id":  "S3",
+                                 "texto":  "Prefiero trabajar en equipo antes que solo."
+                             },
+                             {
+                                 "id":  "S4",
+                                 "texto":  "Me siento cómodo hablando en público o liderando grupos."
+                             },
+                             {
+                                 "id":  "S5",
+                                 "texto":  "Disfruto escuchar y entender las emociones de otras personas."
+                             },
+                             {
+                                 "id":  "S6",
+                                 "texto":  "Me interesa el bienestar de mi comunidad."
+                             },
+                             {
+                                 "id":  "S7",
+                                 "texto":  "Prefiero roles donde interactúo constantemente con personas."
+                             },
+                             {
+                                 "id":  "S8",
+                                 "texto":  "Disfruto participar en actividades de voluntariado o servicio social."
+                             }
+                         ],
+                   "E":  [
+                             {
+                                 "id":  "E1",
+                                 "texto":  "Me gusta persuadir o convencer a otros de una idea."
+                             },
+                             {
+                                 "id":  "E2",
+                                 "texto":  "Disfruto tomar la iniciativa en proyectos nuevos."
+                             },
+                             {
+                                 "id":  "E3",
+                                 "texto":  "Me atrae la idea de liderar un negocio o un equipo."
+                             },
+                             {
+                                 "id":  "E4",
+                                 "texto":  "Disfruto negociar o cerrar acuerdos."
+                             },
+                             {
+                                 "id":  "E5",
+                                 "texto":  "Me siento cómodo asumiendo riesgos calculados."
+                             },
+                             {
+                                 "id":  "E6",
+                                 "texto":  "Prefiero fijar mis propias metas antes que seguir instrucciones de otros."
+                             },
+                             {
+                                 "id":  "E7",
+                                 "texto":  "Me motiva competir y destacar frente a otros."
+                             },
+                             {
+                                 "id":  "E8",
+                                 "texto":  "Disfruto vender ideas, productos o proyectos."
+                             }
+                         ],
+                   "C":  [
+                             {
+                                 "id":  "C1",
+                                 "texto":  "Prefiero el orden, la organización y los procedimientos claros."
+                             },
+                             {
+                                 "id":  "C2",
+                                 "texto":  "Disfruto trabajar con números, datos o registros detallados."
+                             },
+                             {
+                                 "id":  "C3",
+                                 "texto":  "Me siento cómodo siguiendo reglas y estructuras establecidas."
+                             },
+                             {
+                                 "id":  "C4",
+                                 "texto":  "Prefiero tareas predecibles antes que ambiguas."
+                             },
+                             {
+                                 "id":  "C5",
+                                 "texto":  "Disfruto organizar información en sistemas o archivos."
+                             },
+                             {
+                                 "id":  "C6",
+                                 "texto":  "Me gusta revisar los detalles para asegurar que todo esté correcto."
+                             },
+                             {
+                                 "id":  "C7",
+                                 "texto":  "Prefiero planificar cuidadosamente antes de actuar."
+                             },
+                             {
+                                 "id":  "C8",
+                                 "texto":  "Me siento cómodo con tareas administrativas o de control."
+                             }
+                         ]
+               },
+    "big5":  {
+                 "apertura":  [
+                                  {
+                                      "id":  "O1",
+                                      "texto":  "Tengo una imaginación vívida.",
+                                      "reverso":  false
+                                  },
+                                  {
+                                      "id":  "O2",
+                                      "texto":  "Me gusta explorar ideas abstractas o teóricas.",
+                                      "reverso":  false
+                                  },
+                                  {
+                                      "id":  "O3",
+                                      "texto":  "Prefiero rutinas conocidas antes que experiencias nuevas.",
+                                      "reverso":  true
+                                  },
+                                  {
+                                      "id":  "O4",
+                                      "texto":  "Disfruto el arte, la música o la literatura.",
+                                      "reverso":  false
+                                  },
+                                  {
+                                      "id":  "O5",
+                                      "texto":  "Me aburren las conversaciones sobre ideas filosóficas o abstractas.",
+                                      "reverso":  true
+                                  },
+                                  {
+                                      "id":  "O6",
+                                      "texto":  "Me considero una persona curiosa.",
+                                      "reverso":  false
+                                  }
+                              ],
+                 "responsabilidad":  [
+                                         {
+                                             "id":  "C1b",
+                                             "texto":  "Cumplo mis tareas a tiempo.",
+                                             "reverso":  false
+                                         },
+                                         {
+                                             "id":  "C2b",
+                                             "texto":  "Dejo las cosas para el último momento.",
+                                             "reverso":  true
+                                         },
+                                         {
+                                             "id":  "C3b",
+                                             "texto":  "Sigo un plan aunque surjan distracciones.",
+                                             "reverso":  false
+                                         },
+                                         {
+                                             "id":  "C4b",
+                                             "texto":  "Suelo dejar tareas a medias.",
+                                             "reverso":  true
+                                         },
+                                         {
+                                             "id":  "C5b",
+                                             "texto":  "Presto atención a los detalles.",
+                                             "reverso":  false
+                                         },
+                                         {
+                                             "id":  "C6b",
+                                             "texto":  "Soy desordenado/a con mis responsabilidades.",
+                                             "reverso":  true
+                                         }
+                                     ],
+                 "extraversion":  [
+                                      {
+                                          "id":  "E1b",
+                                          "texto":  "Disfruto ser el centro de atención en un grupo.",
+                                          "reverso":  false
+                                      },
+                                      {
+                                          "id":  "E2b",
+                                          "texto":  "Prefiero pasar tiempo solo/a antes que en grupo.",
+                                          "reverso":  true
+                                      },
+                                      {
+                                          "id":  "E3b",
+                                          "texto":  "Me energiza estar rodeado de gente.",
+                                          "reverso":  false
+                                      },
+                                      {
+                                          "id":  "E4b",
+                                          "texto":  "Me cuesta iniciar conversaciones con desconocidos.",
+                                          "reverso":  true
+                                      },
+                                      {
+                                          "id":  "E5b",
+                                          "texto":  "Hablo con facilidad en situaciones sociales nuevas.",
+                                          "reverso":  false
+                                      },
+                                      {
+                                          "id":  "E6b",
+                                          "texto":  "Prefiero actividades tranquilas y silenciosas.",
+                                          "reverso":  true
+                                      }
+                                  ],
+                 "amabilidad":  [
+                                    {
+                                        "id":  "A1b",
+                                        "texto":  "Me preocupo genuinamente por el bienestar de otras personas.",
+                                        "reverso":  false
+                                    },
+                                    {
+                                        "id":  "A2b",
+                                        "texto":  "Tiendo a criticar a las personas fácilmente.",
+                                        "reverso":  true
+                                    },
+                                    {
+                                        "id":  "A3b",
+                                        "texto":  "Confío en las intenciones de los demás.",
+                                        "reverso":  false
+                                    },
+                                    {
+                                        "id":  "A4b",
+                                        "texto":  "Me cuesta ponerme en el lugar de otra persona.",
+                                        "reverso":  true
+                                    },
+                                    {
+                                        "id":  "A5b",
+                                        "texto":  "Disfruto cooperar antes que competir.",
+                                        "reverso":  false
+                                    },
+                                    {
+                                        "id":  "A6b",
+                                        "texto":  "Suelo ser cortante o brusco/a con los demás.",
+                                        "reverso":  true
+                                    }
+                                ],
+                 "estabilidad_emocional":  [
+                                               {
+                                                   "id":  "N1",
+                                                   "texto":  "Me mantengo tranquilo/a bajo presión.",
+                                                   "reverso":  false
+                                               },
+                                               {
+                                                   "id":  "N2",
+                                                   "texto":  "Me estreso con facilidad ante los problemas.",
+                                                   "reverso":  true
+                                               },
+                                               {
+                                                   "id":  "N3",
+                                                   "texto":  "Recupero mi ánimo rápido después de un contratiempo.",
+                                                   "reverso":  false
+                                               },
+                                               {
+                                                   "id":  "N4",
+                                                   "texto":  "Me preocupo constantemente por cosas que podrían salir mal.",
+                                                   "reverso":  true
+                                               },
+                                               {
+                                                   "id":  "N5",
+                                                   "texto":  "Rara vez me siento abrumado/a por mis responsabilidades.",
+                                                   "reverso":  false
+                                               },
+                                               {
+                                                   "id":  "N6",
+                                                   "texto":  "Mis emociones cambian bruscamente durante el día.",
+                                                   "reverso":  true
+                                               }
+                                           ]
+             },
+    "abiertas":  [
+                     {
+                         "id":  "AB1",
+                         "texto":  "Describe una actividad (académica, laboral, personal o de hobby) en la que hayas perdido la noción del tiempo. ¿Qué estabas haciendo?"
+                     },
+                     {
+                         "id":  "AB2",
+                         "texto":  "Si pudieras resolver un problema de tu comunidad, país o entorno inmediato, ¿cuál elegirías y por qué?"
+                     },
+                     {
+                         "id":  "AB3",
+                         "texto":  "¿Qué tipo de tareas evitas siempre que tienes la opción, incluso si sabes que \"debes\" hacerlas?"
+                     },
+                     {
+                         "id":  "AB4",
+                         "texto":  "Cuéntame sobre un logro, grande o pequeño, del que te sientas orgulloso/a. ¿Qué parte del proceso disfrutaste más?"
+                     },
+                     {
+                         "id":  "AB5",
+                         "texto":  "Si el dinero y el \"qué dirán\" no fueran un factor, ¿qué estudiarías o a qué te dedicarías?"
+                     }
+                 ]
+}

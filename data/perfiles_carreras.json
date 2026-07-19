@@ -1,0 +1,578 @@
+[
+    {
+        "id":  "ing_ambiental",
+        "nombre":  "Licenciatura en Ingeniería Ambiental",
+        "facultad":  "Ingeniería Civil",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "I, II",
+        "riasec":  {
+                       "R":  70,
+                       "I":  75,
+                       "A":  15,
+                       "S":  45,
+                       "E":  20,
+                       "C":  40
+                   },
+        "big5":  {
+                     "apertura":  70,
+                     "responsabilidad":  75,
+                     "extraversion":  40,
+                     "amabilidad":  60,
+                     "estabilidad":  55
+                 },
+        "notas":  "Perfil investigador-realista, con componente social por su vinculo con impacto comunitario/ambiental. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, el campo laboral cubre entidades publicas (MINSA, ANAM, MOP) y empresas privadas de consultoria/construccion ambiental, casi siempre trabajando junto a otras disciplinas (no siempre como rol independiente)."
+    },
+    {
+        "id":  "ing_civil",
+        "nombre":  "Licenciatura en Ingeniería Civil",
+        "facultad":  "Ingeniería Civil",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "I, II, III",
+        "riasec":  {
+                       "R":  85,
+                       "I":  50,
+                       "A":  20,
+                       "S":  30,
+                       "E":  35,
+                       "C":  55
+                   },
+        "big5":  {
+                     "apertura":  45,
+                     "responsabilidad":  85,
+                     "extraversion":  45,
+                     "amabilidad":  40,
+                     "estabilidad":  60
+                 },
+        "notas":  "Alta demanda de precision, responsabilidad y tolerancia a la presion (obra, plazos, normativa). [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP: diseno, construccion y supervision de vias, puentes, obras hidraulicas y edificaciones, en sector publico y privado. Profesion con colegiatura definida y demanda historicamente alta en Panama."
+    },
+    {
+        "id":  "ing_maritima_portuaria",
+        "nombre":  "Licenciatura en Ingeniería Marítima y Portuaria",
+        "facultad":  "Ingeniería Civil",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "I, II",
+        "riasec":  {
+                       "R":  65,
+                       "I":  40,
+                       "A":  10,
+                       "S":  30,
+                       "E":  55,
+                       "C":  70
+                   },
+        "big5":  {
+                     "apertura":  50,
+                     "responsabilidad":  70,
+                     "extraversion":  60,
+                     "amabilidad":  40,
+                     "estabilidad":  60
+                 },
+        "notas":  "Combina logistica, operaciones y entorno fisico/portuario; tolerancia a entornos cambiantes. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo especializado y con pocos competidores en Panama: puertos, agencias navieras, dragado, Autoridad Maritima, Autoridad del Canal - sector estrategico dado el rol del pais en el comercio maritimo mundial."
+    },
+    {
+        "id":  "ing_admin_proyectos_construccion",
+        "nombre":  "Ingeniería en Administración de Proyectos de Construcción",
+        "facultad":  "Ingeniería Civil",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "I, II, III",
+        "riasec":  {
+                       "R":  55,
+                       "I":  30,
+                       "A":  15,
+                       "S":  45,
+                       "E":  65,
+                       "C":  75
+                   },
+        "big5":  {
+                     "apertura":  50,
+                     "responsabilidad":  82,
+                     "extraversion":  65,
+                     "amabilidad":  50,
+                     "estabilidad":  60
+                 },
+        "notas":  "Hibrido tecnico-gerencial: mitad obra, mitad gestion de personas/presupuestos/tiempos. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, cubre gerencia y administracion de proyectos de construccion, presupuestos, licitaciones y fiscalizacion de obras - perfil gerencial-tecnico con salida laboral amplia en constructoras, consultoras e instituciones publicas."
+    },
+    {
+        "id":  "edificaciones",
+        "nombre":  "Licenciatura en Edificaciones",
+        "facultad":  "Ingeniería Civil",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  78,
+                       "I":  30,
+                       "A":  40,
+                       "S":  20,
+                       "E":  30,
+                       "C":  50
+                   },
+        "big5":  {
+                     "apertura":  55,
+                     "responsabilidad":  72,
+                     "extraversion":  40,
+                     "amabilidad":  40,
+                     "estabilidad":  55
+                 },
+        "notas":  "Perfil realista con dosis de diseno/dibujo tecnico (componente artistico moderado). [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, el campo laboral combina trabajo tecnico en obra con gestion en oficina: constructoras, inmobiliarias, bancos/aseguradoras, o entidades publicas como MOP, MIVIOT, ACP."
+    },
+    {
+        "id":  "saneamiento_ambiente",
+        "nombre":  "Licenciatura en Saneamiento y Ambiente",
+        "facultad":  "Ingeniería Civil",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  60,
+                       "I":  55,
+                       "A":  10,
+                       "S":  60,
+                       "E":  15,
+                       "C":  50
+                   },
+        "big5":  {
+                     "apertura":  55,
+                     "responsabilidad":  70,
+                     "extraversion":  45,
+                     "amabilidad":  65,
+                     "estabilidad":  55
+                 },
+        "notas":  "Vocacion de servicio comunitario/salud publica combinada con trabajo tecnico de campo. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, el foco es la salud publica a traves del control ambiental: planificacion, gestion y control de problematicas de saneamiento, con enfoque cientifico-tecnico aplicado."
+    },
+    {
+        "id":  "topografia",
+        "nombre":  "Licenciatura en Topografía",
+        "facultad":  "Ingeniería Civil",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  85,
+                       "I":  35,
+                       "A":  10,
+                       "S":  15,
+                       "E":  20,
+                       "C":  80
+                   },
+        "big5":  {
+                     "apertura":  35,
+                     "responsabilidad":  78,
+                     "extraversion":  25,
+                     "amabilidad":  35,
+                     "estabilidad":  55
+                 },
+        "notas":  "Trabajo de campo tecnico-preciso, poca ambiguedad, alto orden/metodo. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo laboral amplio y con alta demanda tecnica: catastro, avaluos, obras civiles, cartografia digital, SIG, drones/fotogrametria - tanto en sector publico como consultoria independiente."
+    },
+    {
+        "id":  "ing_electromecanica",
+        "nombre":  "Licenciatura en Ingeniería Electromecánica",
+        "facultad":  "Ingeniería Eléctrica",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  78,
+                       "I":  35,
+                       "A":  10,
+                       "S":  20,
+                       "E":  30,
+                       "C":  65
+                   },
+        "big5":  {
+                     "apertura":  45,
+                     "responsabilidad":  75,
+                     "extraversion":  35,
+                     "amabilidad":  35,
+                     "estabilidad":  55
+                 },
+        "notas":  "Diferenciado de Ing. Mecanica (2026-07): mas orientado a mantenimiento, operacion y procedimiento (C mas alto, I mas bajo) que a diseno/analisis teorico. Pendiente de validar con coordinador. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP: perfil combinado electrico+mecanico, interpreta normas y administra mantenimiento en sectores de generacion/transformacion de energia, telecomunicaciones e industrias mecanicas. Salida laboral amplia en sector publico y privado."
+    },
+    {
+        "id":  "ing_electronica_telecom",
+        "nombre":  "Licenciatura en Ingeniería Electrónica y Telecomunicaciones",
+        "facultad":  "Ingeniería Eléctrica",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "I, II, III, IV",
+        "riasec":  {
+                       "R":  55,
+                       "I":  85,
+                       "A":  15,
+                       "S":  15,
+                       "E":  25,
+                       "C":  40
+                   },
+        "big5":  {
+                     "apertura":  70,
+                     "responsabilidad":  72,
+                     "extraversion":  30,
+                     "amabilidad":  35,
+                     "estabilidad":  55
+                 },
+        "notas":  "Perfil investigador-realista, afinidad por sistemas abstractos (senales, redes). [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo laboral en electronica y telecomunicaciones, sector publico y privado, con enfoque en vanguardia tecnologica. Es carrera acreditada y de alta demanda tecnica."
+    },
+    {
+        "id":  "electronica_sistemas_comunicacion",
+        "nombre":  "Licenciatura en Electrónica y Sistemas de Comunicación",
+        "facultad":  "Ingeniería Eléctrica",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  70,
+                       "I":  55,
+                       "A":  15,
+                       "S":  25,
+                       "E":  30,
+                       "C":  60
+                   },
+        "big5":  {
+                     "apertura":  50,
+                     "responsabilidad":  70,
+                     "extraversion":  45,
+                     "amabilidad":  40,
+                     "estabilidad":  55
+                 },
+        "notas":  "Diferenciado de Electronica y Telecom (2026-07): mas aplicado/practico (integracion de sistemas, R y C mas altos) que teorico. Pendiente de validar con coordinador. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "ALERTA (2026-07): la pagina oficial de la Facultad de Ingenieria Electrica indica textualmente \u0027Esta carrera no se esta ofertando en este momento\u0027 a nivel nacional. No esta confirmado si Azuero es una excepcion. Verificar con la coordinacion de Azuero antes de mostrarla como opcion real a un estudiante."
+    },
+    {
+        "id":  "ing_industrial",
+        "nombre":  "Licenciatura en Ingeniería Industrial",
+        "facultad":  "Ingeniería Industrial",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  40,
+                       "I":  55,
+                       "A":  15,
+                       "S":  50,
+                       "E":  60,
+                       "C":  75
+                   },
+        "big5":  {
+                     "apertura":  55,
+                     "responsabilidad":  80,
+                     "extraversion":  55,
+                     "amabilidad":  45,
+                     "estabilidad":  60
+                 },
+        "notas":  "Optimizacion de procesos y personas; hibrido entre lo tecnico y lo gerencial. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo laboral en industria, empresas de servicio/comerciales, banca y entidades del sector publico - perfil transversal (planeamiento estrategico, factibilidad tecnica-economica, gestion ambiental) aplicable a casi cualquier sector."
+    },
+    {
+        "id":  "mercadeo_negocios_internacionales",
+        "nombre":  "Licenciatura en Mercadeo y Negocios Internacionales",
+        "facultad":  "Ingeniería Industrial",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  15,
+                       "I":  35,
+                       "A":  45,
+                       "S":  65,
+                       "E":  85,
+                       "C":  45
+                   },
+        "big5":  {
+                     "apertura":  70,
+                     "responsabilidad":  65,
+                     "extraversion":  80,
+                     "amabilidad":  60,
+                     "estabilidad":  55
+                 },
+        "notas":  "Perfil emprendedor-social dominante; alta extraversion y apertura, comodidad con la persuasion y el cambio.",
+        "nota_mercado_laboral":  "Segun UTP, perfil multidisciplinario que abarca estudios de mercado, estrategia de precio/producto/promocion, y negociacion internacional. Egresado de Randy confirma que la carrera si tiene salida laboral definida y sale bien posicionada frente a otras del area administrativa."
+    },
+    {
+        "id":  "logistica_transporte_multimodal",
+        "nombre":  "Licenciatura en Logística y Transporte Multimodal",
+        "facultad":  "Ingeniería Industrial",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  35,
+                       "I":  35,
+                       "A":  10,
+                       "S":  35,
+                       "E":  65,
+                       "C":  80
+                   },
+        "big5":  {
+                     "apertura":  40,
+                     "responsabilidad":  78,
+                     "extraversion":  50,
+                     "amabilidad":  40,
+                     "estabilidad":  60
+                 },
+        "notas":  "Convencional-emprendedor: orden, planificacion, cadena de suministro, presion de tiempos. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, cubre administracion de flotas, transporte multimodal, manejo de materiales y diseno de cadenas de suministro/distribucion - campo con demanda constante dado el rol logistico de Panama (Canal, zona libre, puertos)."
+    },
+    {
+        "id":  "ing_mecanica",
+        "nombre":  "Licenciatura en Ingeniería Mecánica",
+        "facultad":  "Ingeniería Mecánica",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "I, II, III",
+        "riasec":  {
+                       "R":  82,
+                       "I":  68,
+                       "A":  15,
+                       "S":  15,
+                       "E":  20,
+                       "C":  30
+                   },
+        "big5":  {
+                     "apertura":  55,
+                     "responsabilidad":  78,
+                     "extraversion":  30,
+                     "amabilidad":  35,
+                     "estabilidad":  55
+                 },
+        "notas":  "Clasico realista-investigador; afinidad por sistemas fisicos y mecanismos. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo laboral en supervision/direccion de plantas industriales, consultoria tecnica, docencia, o como profesional independiente - carrera base con salida muy transversal en cualquier industria con procesos mecanicos."
+    },
+    {
+        "id":  "ing_naval",
+        "nombre":  "Licenciatura en Ingeniería Naval",
+        "facultad":  "Ingeniería Mecánica",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "I, II, III",
+        "riasec":  {
+                       "R":  70,
+                       "I":  40,
+                       "A":  25,
+                       "S":  25,
+                       "E":  45,
+                       "C":  45
+                   },
+        "big5":  {
+                     "apertura":  55,
+                     "responsabilidad":  80,
+                     "extraversion":  50,
+                     "amabilidad":  40,
+                     "estabilidad":  65
+                 },
+        "notas":  "Similar a mecanica con especializacion en sistemas navales/maritimos. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo especializado y con pocos competidores en Panama: astilleros, produccion de energia, inspeccion y certificacion de buques, Canal de Panama - sector estrategico dado el peso del transporte maritimo en la economia panamena."
+    },
+    {
+        "id":  "ing_energia_ambiente",
+        "nombre":  "Licenciatura en Ingeniería de Energía y Ambiente",
+        "facultad":  "Ingeniería Mecánica",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "I, II, III",
+        "riasec":  {
+                       "R":  55,
+                       "I":  80,
+                       "A":  15,
+                       "S":  35,
+                       "E":  25,
+                       "C":  35
+                   },
+        "big5":  {
+                     "apertura":  75,
+                     "responsabilidad":  72,
+                     "extraversion":  35,
+                     "amabilidad":  50,
+                     "estabilidad":  55
+                 },
+        "notas":  "Investigador-realista con motivacion hacia sostenibilidad/impacto ambiental. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo laboral en diseno y consultoria de sistemas de eficiencia energetica y energias renovables para edificios e industria - area de demanda creciente por la transicion energetica."
+    },
+    {
+        "id":  "ing_aeronautica",
+        "nombre":  "Licenciatura en Ingeniería Aeronáutica",
+        "facultad":  "Ingeniería Mecánica",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "I, II, III",
+        "riasec":  {
+                       "R":  78,
+                       "I":  72,
+                       "A":  15,
+                       "S":  10,
+                       "E":  15,
+                       "C":  45
+                   },
+        "big5":  {
+                     "apertura":  60,
+                     "responsabilidad":  88,
+                     "extraversion":  25,
+                     "amabilidad":  30,
+                     "estabilidad":  70
+                 },
+        "notas":  "Alta exigencia tecnica y precision; tolerancia a la complejidad y al detalle critico. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo laboral en diseno y mantenimiento de aeronaves y sus sistemas de apoyo (estructuras, motores, navegacion) - carrera de nicho tecnico, alta especializacion, pocos programas similares en el pais."
+    },
+    {
+        "id":  "mecanica_industrial",
+        "nombre":  "Licenciatura en Mecánica Industrial",
+        "facultad":  "Ingeniería Mecánica",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  85,
+                       "I":  25,
+                       "A":  10,
+                       "S":  10,
+                       "E":  15,
+                       "C":  55
+                   },
+        "big5":  {
+                     "apertura":  35,
+                     "responsabilidad":  70,
+                     "extraversion":  30,
+                     "amabilidad":  35,
+                     "estabilidad":  50
+                 },
+        "notas":  "Mas aplicado/practico que teorico; mantenimiento y produccion industrial. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo laboral en fabricacion, instalacion y mantenimiento de equipos mecanicos industriales, montajes y reparaciones - salida practica/tecnica, con posibilidad de crear empresa propia en el area."
+    },
+    {
+        "id":  "ing_sistemas_computacion",
+        "nombre":  "Licenciatura en Ingeniería de Sistemas y Computación",
+        "facultad":  "Ingeniería de Sistemas Computacionales",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  30,
+                       "I":  80,
+                       "A":  35,
+                       "S":  20,
+                       "E":  30,
+                       "C":  60
+                   },
+        "big5":  {
+                     "apertura":  72,
+                     "responsabilidad":  70,
+                     "extraversion":  35,
+                     "amabilidad":  35,
+                     "estabilidad":  55
+                 },
+        "notas":  "Investigador dominante, alta apertura, pensamiento abstracto/logico. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo ocupacional amplio y diversificado (sector publico y privado): desarrollo de aplicaciones, hardware, y mas. Disponible en Azuero segun la propia UTP."
+    },
+    {
+        "id":  "desarrollo_software",
+        "nombre":  "Licenciatura en Desarrollo de Software",
+        "facultad":  "Ingeniería de Sistemas Computacionales",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  15,
+                       "I":  70,
+                       "A":  60,
+                       "S":  15,
+                       "E":  35,
+                       "C":  40
+                   },
+        "big5":  {
+                     "apertura":  78,
+                     "responsabilidad":  62,
+                     "extraversion":  30,
+                     "amabilidad":  35,
+                     "estabilidad":  50
+                 },
+        "notas":  "Investigador-artistico: logica combinada con creatividad de diseno de producto/UX. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo laboral en empresas bancarias, comerciales, industriales, publicas, financieras y de software - alta demanda general en cualquier sector que necesite desarrollo a medida."
+    },
+    {
+        "id":  "redes_informaticas",
+        "nombre":  "Licenciatura en Redes Informáticas",
+        "facultad":  "Ingeniería de Sistemas Computacionales",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  45,
+                       "I":  55,
+                       "A":  10,
+                       "S":  20,
+                       "E":  20,
+                       "C":  85
+                   },
+        "big5":  {
+                     "apertura":  45,
+                     "responsabilidad":  78,
+                     "extraversion":  25,
+                     "amabilidad":  35,
+                     "estabilidad":  55
+                 },
+        "notas":  "Convencional-investigador: infraestructura, orden, procedimientos, documentacion tecnica. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, forma profesionales para planificar, disenar y administrar redes de computadoras - rol tecnico con demanda estable en cualquier organizacion con infraestructura de TI."
+    },
+    {
+        "id":  "ciberseguridad",
+        "nombre":  "Licenciatura en Ciberseguridad",
+        "facultad":  "Ingeniería de Sistemas Computacionales",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  30,
+                       "I":  75,
+                       "A":  15,
+                       "S":  15,
+                       "E":  25,
+                       "C":  70
+                   },
+        "big5":  {
+                     "apertura":  58,
+                     "responsabilidad":  85,
+                     "extraversion":  20,
+                     "amabilidad":  25,
+                     "estabilidad":  68
+                 },
+        "notas":  "Perfil analitico-meticuloso, tolerancia a la ambiguedad en amenazas, pensamiento adversarial. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, salida laboral amplia y bien definida: administrador de seguridad de redes, consultor, hacking etico, arquitecto de seguridad, especialista forense, analista de riesgo - carrera con demanda creciente y cargos claramente diferenciados, confirmando que si tiene un camino de carrera solido."
+    },
+    {
+        "id":  "comunicacion_ejecutiva_bilingue",
+        "nombre":  "Licenciatura en Comunicación Ejecutiva Bilingüe",
+        "facultad":  "Ciencia y Tecnología",
+        "completa_en_azuero":  true,
+        "anios_en_azuero":  "completa",
+        "riasec":  {
+                       "R":  10,
+                       "I":  25,
+                       "A":  55,
+                       "S":  70,
+                       "E":  55,
+                       "C":  55
+                   },
+        "big5":  {
+                     "apertura":  65,
+                     "responsabilidad":  65,
+                     "extraversion":  75,
+                     "amabilidad":  65,
+                     "estabilidad":  55
+                 },
+        "notas":  "Ajustado 2026-07 con input de un egresado real: bajado S/A frente a la version inicial (que sobreestimaba el componente de ayuda/creativo por clasificacion generica tipo O*NET). Es un perfil de apoyo ejecutivo/administrativo bilingue, no una especialidad tecnica propia.",
+        "nota_mercado_laboral":  "Segun la propia UTP (fct.utp.ac.pa), el campo laboral es de apoyo ejecutivo/administrativo generalista (asistencia gerencial, oficinas, turismo, banca, aerolineas), no una especialidad tecnica definida. Un egresado reporta que en Panama el nombre de esta carrera no siempre facilita la insercion laboral especializada. Vale la pena investigar bien la salida laboral real antes de decidir."
+    },
+    {
+        "id":  "ing_forestal",
+        "nombre":  "Licenciatura en Ingeniería Forestal",
+        "facultad":  "Ciencia y Tecnología",
+        "completa_en_azuero":  false,
+        "anios_en_azuero":  "5 anios academicos, 10 semestres (verificar con coordinacion cuantos son cursables en Azuero especificamente)",
+        "riasec":  {
+                       "R":  70,
+                       "I":  60,
+                       "A":  20,
+                       "S":  55,
+                       "E":  20,
+                       "C":  30
+                   },
+        "big5":  {
+                     "apertura":  62,
+                     "responsabilidad":  68,
+                     "extraversion":  40,
+                     "amabilidad":  60,
+                     "estabilidad":  55
+                 },
+        "notas":  "Realista-investigador con vocacion ambiental/conservacion; trabajo de campo prolongado. [Re-calibrado 2026-07: diferenciacion real basada en el enfoque distintivo de cada carrera segun su descripcion oficial UTP, para reducir redundancia entre perfiles de ingenieria muy similares entre si.]",
+        "nota_mercado_laboral":  "Segun UTP, campo laboral amplio dado el peso forestal de Panama: ANAM, Autoridad del Canal (reforestacion de cuenca), municipalidades, empresas forestales, consultoria ambiental, ONGs y turismo ecologico. Demanda creciente por gestion sostenible de recursos naturales."
+    }
+]
