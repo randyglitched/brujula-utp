@@ -710,6 +710,9 @@ function htmlResultados() {
       <div class="legend"><span class="u">Tu perfil</span><span class="c">${mejor.nombre}</span></div>
     </div>
     <h2 style="margin-top:24px;">Tus 5 mejores matches</h2>
+    <p style="font-size:13px; margin-top:-8px;">Un detalle importante: estos números <strong style="color:var(--text);">no son un reparto de 100%</strong> entre las 24 carreras —
+    cada uno mide, por separado, qué tan parecido es tu perfil al de esa carrera específica. No te fijes tanto en el número absoluto;
+    lo que importa es el <strong style="color:var(--text);">orden</strong>: tu carrera #1 es la que más se parece a tu perfil entre las 24, sin importar si el número es 90 o 40.</p>
     ${tarjetas}
     <div class="card">
       <button class="link-toggle" id="btn-toggle-ranking">${mostrarRankingCompleto ? "▲ Ocultar ranking completo" : "▼ Ver ranking completo (24 carreras)"}</button>
