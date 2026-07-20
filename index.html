@@ -98,11 +98,14 @@
   }
   .hero > *{position:relative; z-index:1;}
   .hero p{color:#5C5445; max-width:520px;}
-  .hero-brand{display:flex; align-items:center; gap:16px; margin-bottom:24px; flex-wrap:wrap;}
-  .hero-logo{height:88px; width:auto; display:block; flex-shrink:0;}
-  .hero-tagline{
+  .site-header{
+    display:flex; align-items:center; gap:22px; flex-wrap:wrap;
+    padding-bottom:24px; margin-bottom:32px; border-bottom:1px solid var(--line-dim);
+  }
+  .site-header-logo{height:132px; width:auto; display:block; flex-shrink:0;}
+  .site-header-tagline{
     font-family:'Playfair Display', serif; font-style:italic; font-weight:400;
-    font-size:16px; color:#1C6E7A; max-width:260px; line-height:1.35;
+    font-size:24px; color:#1C6E7A; max-width:340px; line-height:1.35;
   }
   .origin-card{
     background:var(--hero-2); border-left:4px solid var(--gold);
@@ -264,6 +267,10 @@
 </head>
 <body>
 <div id="page-wrap">
+  <header class="site-header">
+    <img src="assets/logo-utp.png" alt="Universidad Tecnológica de Panamá" class="site-header-logo">
+    <span class="site-header-tagline">Camino a la excelencia a través del mejoramiento continuo</span>
+  </header>
   <div id="app"></div>
   <footer class="site-footer">
     Proyecto piloto desarrollado por el estudiante de Mercadeo y Negocios Internacionales, <strong>Randolph Rodríguez</strong>, utilizando Claude Code.
@@ -623,17 +630,13 @@ function htmlIntro() {
   return `
     ${bannerResume}
     <div class="hero">
-      <div class="hero-brand">
-        <img src="assets/logo-utp.png" alt="Universidad Tecnológica de Panamá" class="hero-logo">
-        <span class="hero-tagline">Camino a la excelencia a través del mejoramiento continuo</span>
-      </div>
       <div class="eyebrow">Centro Regional de Azuero · UTP</div>
       <h1>Br<span class="accent">ú</span>jula UTP</h1>
       <p>Un test de orientación vocacional basado en el modelo RIASEC de Holland y el modelo Big Five de personalidad,
       calibrado contra las 24 carreras que se ofrecen en el Centro Regional de Azuero.</p>
     </div>
     <div class="card origin-card">
-      <h2>Cómo nació Brújula UTP</h2>
+      <h2>¿Cómo nació Brújula UTP?</h2>
       <p class="lead">Nacimos de una charla en el bus.</p>
       <p>Vimos a demasiados estudiantes de primer ingreso o incluso otros semestres abandonar la UTP o cambiarse de
       universidad solo por no haber elegido la carrera correcta desde el inicio.</p>
