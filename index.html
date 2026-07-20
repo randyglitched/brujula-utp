@@ -26,8 +26,8 @@
     --brass:#7A1C79;
     --brass-light:#591458;
     --brass-tint:#F1E1F0;
-    --teal:#004311;
-    --teal-tint:#E1EBE3;
+    --teal:#3D6B12;
+    --teal-tint:#E9F1DC;
     --gold:#8F7000;
     --gold-tint:#FBF0D6;
     --hero-1:#FBF3DC;
@@ -183,6 +183,7 @@
     background:transparent;
   }
   .likert-opt:hover{border-color:var(--brass); color:var(--brass-light); background:var(--brass-tint);}
+  .likert-opt:focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
   .likert-opt.selected{
     background:var(--brass); border-color:var(--brass); color:#fff; font-weight:600;
   }
@@ -697,13 +698,13 @@ function htmlPagina(idx) {
     contenido = pag.items.map((item, i) => {
       const seleccion = respuestas[item.id];
       const opciones = [1, 2, 3, 4, 5].map((v) => `
-        <div class="likert-opt ${seleccion === v ? "selected" : ""}" data-id="${item.id}" data-val="${v}">${v}</div>
+        <div class="likert-opt ${seleccion === v ? "selected" : ""}" data-id="${item.id}" data-val="${v}" role="radio" aria-checked="${seleccion === v}" aria-label="${v}" tabindex="0">${v}</div>
       `).join("");
       return `
         <div class="question">
           <div class="question-text"><span class="qnum">${String(i + 1).padStart(2, "0")}</span>${item.texto}</div>
           <div class="likert-row">
-            <div class="likert-options">${opciones}</div>
+            <div class="likert-options" role="radiogroup" aria-label="${escapeHtml(item.texto)}">${opciones}</div>
           </div>
         </div>
       `;
@@ -1034,11 +1035,18 @@ function bindEvents() {
     }
   });
 
+  function seleccionarLikert(el) {
+    respuestas[el.dataset.id] = parseInt(el.dataset.val, 10);
+    guardarProgreso();
+    render();
+  }
   document.querySelectorAll(".likert-opt").forEach((el) => {
-    el.addEventListener("click", () => {
-      respuestas[el.dataset.id] = parseInt(el.dataset.val, 10);
-      guardarProgreso();
-      render();
+    el.addEventListener("click", () => seleccionarLikert(el));
+    el.addEventListener("keydown", (ev) => {
+      if (ev.key === "Enter" || ev.key === " " || ev.key === "Spacebar") {
+        ev.preventDefault();
+        seleccionarLikert(el);
+      }
     });
   });
 

@@ -27,6 +27,16 @@ function permitirSolicitud(ip) {
   return true;
 }
 
+// Compara el origen exacto (o el origen + "/" para el caso de Referer, que
+// incluye path). Un startsWith() ingenuo aqui es evadible: un atacante dueno
+// de "attacker.com" puede crear el subdominio "brujula-utp.vercel.app.attacker.com",
+// cuyo Origin SI pasaria un startsWith(permitido) aunque sea un sitio distinto.
+function origenValido(origenHeader, permitido) {
+  if (!permitido) return true;
+  if (!origenHeader) return false;
+  return origenHeader === permitido || origenHeader.startsWith(`${permitido}/`);
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Método no permitido" });
@@ -36,7 +46,7 @@ export default async function handler(req, res) {
   // apuntando directo al endpoint.
   const origin = req.headers.origin || req.headers.referer || "";
   const origenPermitido = process.env.SITIO_PERMITIDO || ""; // ej: https://brujula-utp.vercel.app
-  if (origenPermitido && !origin.startsWith(origenPermitido)) {
+  if (!origenValido(origin, origenPermitido)) {
     return res.status(403).json({ error: "Origen no permitido" });
   }
 
