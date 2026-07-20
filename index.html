@@ -11,27 +11,30 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Brújula UTP — Orientación Vocacional">
 <meta name="twitter:description" content="Test de orientación vocacional RIASEC + Big Five calibrado contra las carreras del Centro Regional de Azuero, UTP.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23221E19'/%3E%3Cpolygon points='50,15 80,32 80,68 50,85 20,68 20,32' fill='none' stroke='%23D9822B' stroke-width='4'/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23221E19'/%3E%3Cpolygon points='50,15 80,32 80,68 50,85 20,68 20,32' fill='none' stroke='%23D9822B' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%237A1C79'/%3E%3Cpolygon points='50,15 80,32 80,68 50,85 20,68 20,32' fill='none' stroke='%23B78E00' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%237A1C79'/%3E%3Cpolygon points='50,15 80,32 80,68 50,85 20,68 20,32' fill='none' stroke='%23B78E00' stroke-width='4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#FDFCFB;
+    /* Paleta tomada del logo oficial de la UTP: morado, verde y dorado. */
+    --ink:#FDFCFD;
     --ink-2:#FFFFFF;
-    --ink-3:#F5F1EA;
-    --line:#E3DCCE;
-    --line-dim:#EEE8DC;
-    --brass:#C1601C;
-    --brass-light:#9C4C15;
-    --brass-tint:#FBEAD8;
-    --teal:#2F6F62;
-    --teal-tint:#E4EEEB;
-    --hero-1:#FBEEDC;
-    --hero-2:#FDF7EE;
-    --text:#221E19;
-    --text-dim:#726C60;
-    --ok:#2F7A4C;
+    --ink-3:#F4F0F5;
+    --line:#DED3DD;
+    --line-dim:#ECE6EC;
+    --brass:#7A1C79;
+    --brass-light:#591458;
+    --brass-tint:#F1E1F0;
+    --teal:#004311;
+    --teal-tint:#E1EBE3;
+    --gold:#8F7000;
+    --gold-tint:#FBF0D6;
+    --hero-1:#FBF3DC;
+    --hero-2:#FFFDF7;
+    --text:#201C22;
+    --text-dim:#6E6870;
+    --ok:#1F5C33;
     --danger:#B0432B;
     --radius:20px;
   }
@@ -47,10 +50,18 @@
     justify-content:center;
     padding:48px 16px 72px;
   }
-  #app{
+  #page-wrap{
     width:100%;
     max-width:720px;
   }
+  #app{
+    width:100%;
+  }
+  .site-footer{
+    margin-top:32px; padding-top:20px; border-top:1px solid var(--line-dim);
+    text-align:center; font-size:12px; line-height:1.6; color:var(--text-dim);
+  }
+  .site-footer strong{color:var(--text);}
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
     font-size:12px;
@@ -81,12 +92,26 @@
   .hero::after{
     content:"";
     position:absolute; right:-36px; top:-36px; width:200px; height:200px;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%23C1601C' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='33' fill='none' stroke='%23C1601C' stroke-width='1' stroke-opacity='0.5'/%3E%3Cline x1='50' y1='4' x2='50' y2='15' stroke='%23C1601C' stroke-width='2'/%3E%3Cline x1='50' y1='85' x2='50' y2='96' stroke='%23C1601C' stroke-width='2'/%3E%3Cline x1='4' y1='50' x2='15' y2='50' stroke='%23C1601C' stroke-width='2'/%3E%3Cline x1='85' y1='50' x2='96' y2='50' stroke='%23C1601C' stroke-width='2'/%3E%3Cpolygon points='50,18 59,50 50,82 41,50' fill='%23C1601C' fill-opacity='0.9'/%3E%3Ccircle cx='50' cy='50' r='4.5' fill='%23221E19'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%23B78E00' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='33' fill='none' stroke='%23B78E00' stroke-width='1' stroke-opacity='0.5'/%3E%3Cline x1='50' y1='4' x2='50' y2='15' stroke='%23B78E00' stroke-width='2'/%3E%3Cline x1='50' y1='85' x2='50' y2='96' stroke='%23B78E00' stroke-width='2'/%3E%3Cline x1='4' y1='50' x2='15' y2='50' stroke='%23B78E00' stroke-width='2'/%3E%3Cline x1='85' y1='50' x2='96' y2='50' stroke='%23B78E00' stroke-width='2'/%3E%3Cpolygon points='50,18 59,50 50,82 41,50' fill='%237A1C79' fill-opacity='0.9'/%3E%3Ccircle cx='50' cy='50' r='4.5' fill='%23201C22'/%3E%3C/svg%3E");
     background-size:contain; background-repeat:no-repeat;
     opacity:0.5; pointer-events:none;
   }
   .hero > *{position:relative; z-index:1;}
   .hero p{color:#5C5445; max-width:520px;}
+  .hero-brand{display:flex; align-items:center; gap:16px; margin-bottom:24px; flex-wrap:wrap;}
+  .hero-logo{height:88px; width:auto; display:block; flex-shrink:0;}
+  .hero-tagline{
+    font-family:'Playfair Display', serif; font-style:italic; font-weight:400;
+    font-size:16px; color:#1C6E7A; max-width:260px; line-height:1.35;
+  }
+  .origin-card{
+    background:var(--hero-2); border-left:4px solid var(--gold);
+    border-top-left-radius:0; border-bottom-left-radius:0;
+  }
+  .origin-card .lead{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:19px;
+    color:var(--text); margin-bottom:12px;
+  }
   .card{
     background:var(--ink-2);
     border:1px solid var(--line-dim);
@@ -193,7 +218,7 @@
     font-size:11px; padding:5px 12px; border-radius:999px; border:none; color:var(--teal);
     background:var(--teal-tint); margin-top:10px;
   }
-  .badge.warn{background:var(--brass-tint); color:var(--brass-light);}
+  .badge.warn{background:var(--gold-tint); color:var(--gold);}
   .score-bar{height:6px; background:var(--ink-3); border-radius:999px; overflow:hidden; margin-top:12px;}
   .score-fill{height:100%; border-radius:999px; background:var(--brass);}
   .hex-wrap{display:flex; justify-content:center; margin:20px 0;}
@@ -238,7 +263,12 @@
 </style>
 </head>
 <body>
-<div id="app"></div>
+<div id="page-wrap">
+  <div id="app"></div>
+  <footer class="site-footer">
+    Proyecto piloto desarrollado por el estudiante de Mercadeo y Negocios Internacionales, <strong>Randolph Rodríguez</strong>, utilizando Claude Code.
+  </footer>
+</div>
 <script>
 // Datos embebidos generados automaticamente desde /data/*.json
 const RIASEC_BANK = {"R": [{"id": "R1", "texto": "Disfruto reparar o armar objetos mecánicos o eléctricos."}, {"id": "R2", "texto": "Prefiero actividades donde pueda usar mis manos y herramientas."}, {"id": "R3", "texto": "Me atrae más resolver un problema físico que uno abstracto."}, {"id": "R4", "texto": "Disfruto trabajar al aire libre o en talleres y laboratorios de campo."}, {"id": "R5", "texto": "Me interesa entender cómo funcionan las máquinas por dentro."}, {"id": "R6", "texto": "Prefiero seguir instrucciones técnicas precisas antes que improvisar."}, {"id": "R7", "texto": "Me siento cómodo con tareas que requieren fuerza física o destreza manual."}, {"id": "R8", "texto": "Disfruto construir, ensamblar o reparar cosas más que hablar de ideas."}], "I": [{"id": "I1", "texto": "Me gusta analizar datos o resolver problemas complejos."}, {"id": "I2", "texto": "Disfruto entender el \"por qué\" detrás de los fenómenos naturales o tecnológicos."}, {"id": "I3", "texto": "Prefiero investigar a fondo un tema antes de tomar una decisión."}, {"id": "I4", "texto": "Me atraen las matemáticas, la física o la lógica."}, {"id": "I5", "texto": "Disfruto formular hipótesis y comprobarlas con evidencia."}, {"id": "I6", "texto": "Me gusta leer sobre ciencia o tecnología en mi tiempo libre."}, {"id": "I7", "texto": "Prefiero trabajar de forma independiente en problemas técnicos."}, {"id": "I8", "texto": "Me siento motivado al resolver acertijos o problemas complejos."}], "A": [{"id": "A1", "texto": "Disfruto expresar ideas de forma creativa (diseño, escritura, música, etc.)."}, {"id": "A2", "texto": "Prefiero ambientes de trabajo flexibles, sin reglas rígidas."}, {"id": "A3", "texto": "Me gusta imaginar soluciones poco convencionales."}, {"id": "A4", "texto": "Disfruto crear contenido visual, escrito o audiovisual."}, {"id": "A5", "texto": "Me identifico como una persona creativa u original."}, {"id": "A6", "texto": "Prefiero tareas donde pueda innovar en vez de seguir un manual."}, {"id": "A7", "texto": "Disfruto cuidar el diseño o la estética de lo que hago."}, {"id": "A8", "texto": "Me atrae la idea de expresar mi personalidad a través de mi trabajo."}], "S": [{"id": "S1", "texto": "Disfruto ayudar a otras personas a resolver sus problemas."}, {"id": "S2", "texto": "Me gusta enseñar, explicar o guiar a otros."}, {"id": "S3", "texto": "Prefiero trabajar en equipo antes que solo."}, {"id": "S4", "texto": "Me siento cómodo hablando en público o liderando grupos."}, {"id": "S5", "texto": "Disfruto escuchar y entender las emociones de otras personas."}, {"id": "S6", "texto": "Me interesa el bienestar de mi comunidad."}, {"id": "S7", "texto": "Prefiero roles donde interactúo constantemente con personas."}, {"id": "S8", "texto": "Disfruto participar en actividades de voluntariado o servicio social."}], "E": [{"id": "E1", "texto": "Me gusta persuadir o convencer a otros de una idea."}, {"id": "E2", "texto": "Disfruto tomar la iniciativa en proyectos nuevos."}, {"id": "E3", "texto": "Me atrae la idea de liderar un negocio o un equipo."}, {"id": "E4", "texto": "Disfruto negociar o cerrar acuerdos."}, {"id": "E5", "texto": "Me siento cómodo asumiendo riesgos calculados."}, {"id": "E6", "texto": "Prefiero fijar mis propias metas antes que seguir instrucciones de otros."}, {"id": "E7", "texto": "Me motiva competir y destacar frente a otros."}, {"id": "E8", "texto": "Disfruto vender ideas, productos o proyectos."}], "C": [{"id": "C1", "texto": "Prefiero el orden, la organización y los procedimientos claros."}, {"id": "C2", "texto": "Disfruto trabajar con números, datos o registros detallados."}, {"id": "C3", "texto": "Me siento cómodo siguiendo reglas y estructuras establecidas."}, {"id": "C4", "texto": "Prefiero tareas predecibles antes que ambiguas."}, {"id": "C5", "texto": "Disfruto organizar información en sistemas o archivos."}, {"id": "C6", "texto": "Me gusta revisar los detalles para asegurar que todo esté correcto."}, {"id": "C7", "texto": "Prefiero planificar cuidadosamente antes de actuar."}, {"id": "C8", "texto": "Me siento cómodo con tareas administrativas o de control."}]};
@@ -593,10 +623,23 @@ function htmlIntro() {
   return `
     ${bannerResume}
     <div class="hero">
+      <div class="hero-brand">
+        <img src="assets/logo-utp.png" alt="Universidad Tecnológica de Panamá" class="hero-logo">
+        <span class="hero-tagline">Camino a la excelencia a través del mejoramiento continuo</span>
+      </div>
       <div class="eyebrow">Centro Regional de Azuero · UTP</div>
       <h1>Br<span class="accent">ú</span>jula UTP</h1>
       <p>Un test de orientación vocacional basado en el modelo RIASEC de Holland y el modelo Big Five de personalidad,
       calibrado contra las 24 carreras que se ofrecen en el Centro Regional de Azuero.</p>
+    </div>
+    <div class="card origin-card">
+      <h2>Cómo nació Brújula UTP</h2>
+      <p class="lead">Nacimos de una charla en el bus.</p>
+      <p>Vimos a demasiados estudiantes de primer ingreso o incluso otros semestres abandonar la UTP o cambiarse de
+      universidad solo por no haber elegido la carrera correcta desde el inicio.</p>
+      <p>Creamos Brújula-UTP para cambiar eso: un test vocacional diseñado por y para nuestra universidad, respaldado
+      por la misma matemática y análisis de datos (Correlación de Pearson) que usan los sistemas profesionales.</p>
+      <p style="margin-bottom:0;">Ahora estarás un paso más cerca de encontrar tu vocación en la UTP. Sin rodeos ni fórmulas inventadas.</p>
     </div>
     <div class="card">
       <h2>Antes de empezar</h2>
